@@ -7,17 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="SimulateData\Sample.json" />
-    <Content Remove="VerifyConfig\ParametersVerify.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="SimulateData\Sample.json" />
-    <TypeScriptCompile Include="VerifyConfig\ParametersVerify.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SimulateData\" />
+    <Folder Include="VerifyConfig\" />
   </ItemGroup>
 
 </Project>
