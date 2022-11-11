@@ -235,17 +235,12 @@
         //DockingCheck
         $("#btnDockingCheck").click(function (e) {
             let request = document.getElementById("txtDockingCheck").value;
-            let data = {
-                request: request
-            }
-
             let parameters = {
-                url: "@Url.Action("DockingCheck", "CIM")",
-                type: "POST",
-                data,
-            };
-
-            jqCallJQAjax(parameters);
+                url: "https://localhost:7203/CIM/DockingCheck",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            }
+ 
+            jqHttpPost(parameters.url, parameters.data);
             console.log(parameters);
             //swalTip(parameters);
         });
@@ -253,17 +248,12 @@
         //DockingStart
         $("#btnDockingStart").click(function (e) {
             let request = document.getElementById("txtDockingStart").value;
-            let data = {
-                request: request
+             let parameters = {
+                url: "https://localhost:7203/CIM/DockingStart",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
             }
 
-            let parameters = {
-                url: "@Url.Action("DockingStart", "CIM")",
-                type: "POST",
-                data: data,
-            };
-
-            jqCallJQAjax(parameters);
+            jqHttpPost(parameters.url, parameters.data);
             console.log(parameters);
             //swalTip(parameters);
         });
@@ -271,17 +261,12 @@
         //DockingEnd
         $("#btnDockingEnd").click(function (e) {
             let request = document.getElementById("txtDockingEnd").value;
-            let data = {
-                request: request
+            let parameters = {
+                url: "https://localhost:7203/CIM/DockingEnd",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
             }
 
-            let parameters = {
-                url: "@Url.Action("DockingEnd", "CIM")",
-                type: "POST",
-                data: data,
-            };
-
-            jqCallJQAjax(parameters);
+            jqHttpPost(parameters.url, parameters.data);
             console.log(parameters);
             //swalTip(parameters);
         });
