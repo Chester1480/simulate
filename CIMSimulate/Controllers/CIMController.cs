@@ -9,6 +9,7 @@ using System;
 using System.Dynamic;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace CIMSimulate.Controllers
@@ -32,10 +33,12 @@ namespace CIMSimulate.Controllers
         public IActionResult Index()
         {
             return View();
-        }  
+        }
 
-        public async Task<CIMResponse> Action(CIMRequeast request)
+        [HttpPost]
+        public async Task<CIMResponse> Action([FromBody] CIMRequest request)
         {
+
             string wwwPath = _environment.WebRootPath;
             var obj = await _fileService.ReadAsync("");
             //string funcName = request.funcName;

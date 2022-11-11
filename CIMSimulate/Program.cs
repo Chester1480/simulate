@@ -18,6 +18,8 @@ builder.Services.AddSingleton<HttpService>();
 builder.Services.AddSingleton<SeleniumService>();
 builder.Services.AddSingleton<VerifyService>();
 
+builder.Services.AddControllers().AddXmlSerializerFormatters();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

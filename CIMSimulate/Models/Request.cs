@@ -12,13 +12,14 @@ namespace CIMSimulate.Models
         public Response response { get; set; }
     }
 
-    public class CIMRequeast
+    public class CIMRequest
     {
         public string funcName { get; set; }
         public string paraMessage { get; set; }
         public Setting setting { get; set; }
         public Response response { get; set; }
     }
+
     public class Setting
     {
         public string mode { get; set; } //0 錯誤 1 正確 2 逾時 
