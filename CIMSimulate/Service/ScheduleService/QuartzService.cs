@@ -6,18 +6,8 @@ namespace CIMSimulate.Service.ScheduleService
     {
         public QuartzService()
         {
-
         }
-        
 
-
-    }
-    public class Jobs : IJob
-    {
-        public Task Execute(IJobExecutionContext context)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }

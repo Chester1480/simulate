@@ -1,10 +1,18 @@
 ﻿using CIMSimulate.Models;
+using CIMSimulate.Service.UtilS;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace CIMSimulate.Controllers
 {
     public class GeenTransController : Controller
     {
+        private HttpService _httpService;
+        private readonly string url = "";
+        public GeenTransController(IServiceProvider service)
+        {
+            _httpService = service.GetService<HttpService>();
+        }
         public IActionResult Index()
         {
             return View();
@@ -28,7 +36,7 @@ namespace CIMSimulate.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("agv/dispatch")]
-        public IActionResult dispatch(AgvDispatchRequest request)
+        public async Task<IActionResult> dispatch(AgvDispatchRequest request)
         {
             Dictionary<string, object> statusList = new Dictionary<string, object>() {
                 {"ispatched","回應正常" },
@@ -36,6 +44,19 @@ namespace CIMSimulate.Controllers
                 {"arrived","已抵達" },
                 {"other","例外狀況" },
             };
+            var parameters = new
+            {
+                request.vehicle,
+                request.destination,
+            };
+
+            var result = await _httpService.HttpPostAsync(url, parameters);
+            //var obj = await JsonSerializer.DeserializeAsync<dynamic>(result);
+            //if (result)
+            //{
+
+            //}
+
             if (string.IsNullOrEmpty(request.status))
             {
                 var response = new
