@@ -30,20 +30,30 @@ namespace CIMSimulate.Controllers
         [Route("agv/dispatch")]
         public IActionResult dispatch(AgvDispatchRequest request)
         {
-            Dictionary<string, object> status = new Dictionary<string, object>() {
+            Dictionary<string, object> statusList = new Dictionary<string, object>() {
                 {"ispatched","回應正常" },
                 {"pending","無法派車" },
                 {"arrived","已抵達" },
                 {"other","例外狀況" },
             };
-            
-            var response = new
+            if (string.IsNullOrEmpty(request.status))
             {
-                status = "ispatched", 
-                errmsg = status["ispatched"]
-            };
-
-            return Ok(response);
+                var response = new
+                {
+                    status = "ispatched",
+                    errmsg = statusList["ispatched"]
+                };
+                return Ok(response);
+            }
+            else
+            {
+                var response = new
+                {
+                    status = request.status,
+                    errmsg = statusList[request.status]
+                };
+                return Ok(response);
+            }
         }
 
         public class AgvInfoRequest
@@ -60,9 +70,34 @@ namespace CIMSimulate.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("agv/info")]
-        public IActionResult info()
+        public IActionResult info(string status)
         {
-            return Ok();
+
+            Dictionary<string, object> statusList = new Dictionary<string, object>() {
+                {"IDLE","待命" },
+                {"WAIT","規劃中" },
+                {"TRACHING","車輛移動中" },
+                {"TRAFFIC","交管等待中" },
+                {"ERROR","異常" },
+            };
+            if (string.IsNullOrEmpty(status))
+            {
+                var response = new
+                {
+                    status = "IDLE",
+                    errmsg = statusList["IDLE"]
+                };
+                return Ok(response);
+            }
+            else
+            {
+                var response = new
+                {
+                    status = status,
+                    errmsg = statusList[status]
+                };
+                return Ok(response);
+            }
         }
 
 
