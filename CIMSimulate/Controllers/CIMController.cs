@@ -3,7 +3,7 @@ using CIMSimulate.Service.SimulateService;
 using CIMSimulate.Service.UtilS;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Mvc;
-
+using Newtonsoft.Json;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace CIMSimulate.Controllers
@@ -75,50 +75,57 @@ namespace CIMSimulate.Controllers
             return xmlString;
         }
 
-        //[HttpPost]
-        //public async Task<CIMResponse> Action([FromBody] CIMRequest request)
-        //{
+                    //[HttpPost]
+                    //public async Task<CIMResponse> Action([FromBody] CIMRequest request)
+                    //{
 
-        //    string wwwPath = _environment.WebRootPath;
-        //    var obj = await _fileService.ReadAsync("");
-        //    //string funcName = request.funcName;
-        //    //string paraMessage = request.paraMessage;
+                    //    string wwwPath = _environment.WebRootPath;
+                    //    var obj = await _fileService.ReadAsync("");
+                    //    //string funcName = request.funcName;
+                    //    //string paraMessage = request.paraMessage;
 
-        //    //if (string.IsNullOrEmpty(funcName))
-        //    //{
-        //    //    return  new CIMResponse
-        //    //    {
-        //    //        ServiceProviderResult = "false",
-        //    //        rtnMessage = "funcName 參數不可為空",
-        //    //    };
-        //    //}
+                    //    //if (string.IsNullOrEmpty(funcName))
+                    //    //{
+                    //    //    return  new CIMResponse
+                    //    //    {
+                    //    //        ServiceProviderResult = "false",
+                    //    //        rtnMessage = "funcName 參數不可為空",
+                    //    //    };
+                    //    //}
 
-        //    //if (string.IsNullOrEmpty(paraMessage))
-        //    //{
-        //    //    return  new CIMResponse
-        //    //    {
-        //    //        ServiceProviderResult = "false",
-        //    //        rtnMessage = "",
-        //    //    };
-        //    //}
+                    //    //if (string.IsNullOrEmpty(paraMessage))
+                    //    //{
+                    //    //    return  new CIMResponse
+                    //    //    {
+                    //    //        ServiceProviderResult = "false",
+                    //    //        rtnMessage = "",
+                    //    //    };
+                    //    //}
 
-        //    return new CIMResponse
-        //    {
-        //        ServiceProviderResult = "1",
-        //        rtnMessage = "執行成功",
-        //    };
+                    //    return new CIMResponse
+                    //    {
+                    //        ServiceProviderResult = "1",
+                    //        rtnMessage = "執行成功",
+                    //    };
 
 
-        //}
+                    //}
+
+                    //public class TestModel {
+                    //          public string TIMESTAMP { get; set; }
+                    //}
 
         [HttpPost]
         public async Task<dynamic> AGVStatus([FromBody]dynamic parameters)
         {
-            string TIMESTAMP = parameters.TIMESTAMP;
-            var test = parameters.GetType().GetProperties;
+                         
 
+                              var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
+                              string TIMESTAMP = payload.TIMESTAMP;
+                              //var test = parameters.GetType().GetProperties;
+                              //string test = parameters.TIMESTAMP;
 
-            string apiUrl = GetApiUrl();
+                              string apiUrl = GetApiUrl();
             //組xml
             var xmlParameters = BuildAGVStatusXmldata(parameters);
             //post

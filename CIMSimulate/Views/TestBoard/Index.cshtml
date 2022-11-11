@@ -222,17 +222,12 @@
         //AGVStatus
         $("#btnAGVStatus").click(function (e) {
             let request = document.getElementById("txtAGVStatus").value;
-            let data = {
-                request: request
-            }
  
             let parameters = {
-                url: "@Url.Action("AGVStatus", "CIM")" ,
-                type: "POST",
-                data: data,
+                url: "https://localhost:7203/CIM/AGVStatus",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
             };
-
-            jqCallJQAjax(parameters);
+            jqHttpPost(parameters.url, parameters.data);
             console.log(parameters);
             //swalTip(parameters);
         });
@@ -247,7 +242,7 @@
             let parameters = {
                 url: "@Url.Action("DockingCheck", "CIM")",
                 type: "POST",
-                data: data,
+                data,
             };
 
             jqCallJQAjax(parameters);
