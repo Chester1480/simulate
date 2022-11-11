@@ -201,7 +201,7 @@
         const greentran_agv_api = "http://172.20.39.237:3004/";
         const greentran_rack_api = "http://172.20.39.237:3003/";
         //const greentran_buffer_api = "";
-
+ 
         $(".btn-beautify").click(function (e) {
             beautifyFormatter("txtAGVStatus");
             beautifyFormatter("txtDockingCheck");
@@ -219,7 +219,14 @@
             swalTip(parameters);
         });
 
-        //AGVStatus
+ 
+        //***********
+        // CIM
+        //***********
+
+        /**
+         * AGVStatus
+         */
         $("#btnAGVStatus").click(function (e) {
             let request = document.getElementById("txtAGVStatus").value;
  
@@ -270,6 +277,12 @@
             console.log(parameters);
             //swalTip(parameters);
         });
+
+
+        //***********
+        // GreenTrans API(待整理)
+        //***********
+
 
     </script>
 }
