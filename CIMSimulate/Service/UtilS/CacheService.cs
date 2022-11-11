@@ -1,4 +1,4 @@
-﻿namespace CIMSimulate.Service
+﻿namespace CIMSimulate.Service.UtilS
 {
     public class CacheService
     {

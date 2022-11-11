@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace CIMSimulate.Service
+namespace CIMSimulate.Service.UtilS
 {
     public class SoapService
     {
@@ -9,11 +9,11 @@ namespace CIMSimulate.Service
 
         }
 
-        
+
 
         public void ObjectToXml(dynamic parameters)
         {
-            System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(parameters.GetType());
+            XmlSerializer x = new XmlSerializer(parameters.GetType());
             x.Serialize(Console.Out, parameters);
             string xml = @"
                 <?xml version=""1.0"" encoding=""IBM437""?>

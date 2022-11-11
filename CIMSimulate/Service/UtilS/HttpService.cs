@@ -3,7 +3,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace CIMSimulate.Service
+namespace CIMSimulate.Service.UtilS
 {
     public class HttpService
     {
