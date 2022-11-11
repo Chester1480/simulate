@@ -200,3 +200,14 @@ function beautifyFormatter(textareaid) {
     var pretty = JSON.stringify(obj, undefined, 4);
     document.getElementById(textareaid).value = pretty;
 }
+
+function GetAllInputValue() {
+          var ids = document.getElementsByTagName('input');
+          let data = {};
+          for (var i = 0; i < ids.length; i++) {
+                    if (!ids[i].disabled) {
+                              data[ids[i].id] = ids[i].value;
+                    }
+          }
+          return data;
+}

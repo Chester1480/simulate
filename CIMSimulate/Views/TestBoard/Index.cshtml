@@ -1,4 +1,10 @@
-﻿<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+﻿<style>
+    textarea{
+              resize:none;
+    }
+</style>
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item p-1" role="presentation">
         <button class="nav-link active" id="pills-cim-tab" data-bs-toggle="pill" data-bs-target="#pills-cim"
                 type="button" role="tab" aria-controls="pills-cim" aria-selected="true">
@@ -167,122 +173,392 @@
     <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-greentrans"
          role="tabpanel">
         <div class="row p-5">
+            <!--agv/dispatch -->
             <div class="card w-100 text-dark bg-light mb-3">
-                <div class="card-body">
-                    <h5 class="card-title"> Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a class="btn btn-primary">執行</a>
+                <div class="card-header">
+                    <h5 class="card-title">agv/dispatch [車輛派發]</h5>
+                </div>
+                <div id="agvDispatch" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvDispatch" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
-                    <span class="badge bg-success">Success</span>
-                    <span class="badge bg-danger">Danger</span>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvDispatchResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--agv/info -->
             <div class="card w-100 text-dark bg-light mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a class="btn btn-primary">執行</a>
+                <div class="card-header">
+                    <h5 class="card-title">agv/info [車輛狀態查詢]</h5>
+                </div>
+                <div id="agvInfo" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--rack/getEmpty -->
             <div class="card w-100 text-dark bg-light mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a class="btn btn-primary">執行</a>
+                <div class="card-header">
+                    <h5 class="card-title">rack/getEmpty [取得貨架上空儲位]</h5>
+                </div>
+                <div id="rackGetEmpty" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--rack/moveIn -->
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">rack/moveIn  [物料資訊入倉(寫入)]</h5>
+                </div>
+                <div id="rackMoveIn" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--rack/findProduct -->
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">rack/findProduct [以物料資訊查詢所在物料所在儲格資訊]</h5>
+                </div>
+                <div id="rackFindProduct" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--rack/moveOut -->
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">rack/moveOut [以物料資訊查詢所在物料所在儲格資訊]</h5>
+                </div>
+                <div id="rackMoveOut" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--rack/setInfo -->
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">rack/setInfo [設定儲格狀態]</h5>
+                </div>
+                <div id="rackSetInfo" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--rack/getInfo -->
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">rack/getInfo [取得儲格狀態]</h5>
+                </div>
+                <div id="rackGetInfo" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--rack/release -->
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">rack/release [釋放被鎖定的儲格]</h5>
+                </div>
+                <div id="rackRelease" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_vehicle" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="info_destination" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-@section scripts{
-    <script>
-        const greentran_agv_api = "http://172.20.39.237:3004/";
-        const greentran_rack_api = "http://172.20.39.237:3003/";
-        //const greentran_buffer_api = "";
+    @section scripts{
+        <script>
+            const greentran_agv_api = "http://172.20.39.237:3004";
+            const greentran_rack_api = "http://172.20.39.237:3003";
+            //const greentran_buffer_api = "";
+
+            $(".btn-beautify").click(function (e) {
+                beautifyFormatter("txtAGVStatus");
+                beautifyFormatter("txtDockingCheck");
+                beautifyFormatter("txtDockingStart");
+                beautifyFormatter("txtDockingEnd");
+            });
+
+            $("#btnExample").click(function (e) {
+                let parameters = {
+                    isTrue: true,
+                    title: "成功",
+                    text: "回傳參數"
+                };
+
+                swalTip(parameters);
+            });
+
+
+            //***********
+            // CIM
+            //***********
+
+            /**
+             * AGVStatus
+             */
+            $("#btnAGVStatus").click(function (e) {
+                let request = document.getElementById("txtAGVStatus").value;
+
+                let parameters = {
+                    url: "https://localhost:7203/CIM/AGVStatus",
+                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+                };
+                jqHttpPost(parameters.url, parameters.data);
+                console.log(parameters);
+                //swalTip(parameters);
+            });
+
+            //DockingCheck
+            $("#btnDockingCheck").click(function (e) {
+                let request = document.getElementById("txtDockingCheck").value;
+                let parameters = {
+                    url: "https://localhost:7203/CIM/DockingCheck",
+                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+                }
+
+                jqHttpPost(parameters.url, parameters.data);
+                console.log(parameters);
+                //swalTip(parameters);
+            });
+
+            //DockingStart
+            $("#btnDockingStart").click(function (e) {
+                let request = document.getElementById("txtDockingStart").value;
+                let parameters = {
+                    url: "https://localhost:7203/CIM/DockingStart",
+                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+                }
+
+                jqHttpPost(parameters.url, parameters.data);
+                console.log(parameters);
+                //swalTip(parameters);
+            });
+
+            //DockingEnd
+            $("#btnDockingEnd").click(function (e) {
+                let request = document.getElementById("txtDockingEnd").value;
+                let parameters = {
+                    url: "https://localhost:7203/CIM/DockingEnd",
+                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+                }
+
+                jqHttpPost(parameters.url, parameters.data);
+                console.log(parameters);
+                //swalTip(parameters);
+            });
+
+
+            //***********
+            // GreenTrans API(未完成)
+            //***********
+
+            //agvDispatch
+            $("#btnAgvDispatch").click(function (e) {
+                const inputs = document.querySelectorAll('#agvDispatch input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
  
-        $(".btn-beautify").click(function (e) {
-            beautifyFormatter("txtAGVStatus");
-            beautifyFormatter("txtDockingCheck");
-            beautifyFormatter("txtDockingStart");
-            beautifyFormatter("txtDockingEnd");
-        });
 
-        $("#btnExample").click(function (e) {
-            let parameters = {
-                isTrue: true,
-                title: "成功",
-                text: "回傳參數"
-            };
+                let parameters = {
+                    url: `${ greentran_agv_api }/agv/dispatch`,
+                    data: object,
+                }
 
-            swalTip(parameters);
-        });
+                //jqHttpPost(parameters.url, parameters.data);
+                console.log(parameters);
+            });
 
- 
-        //***********
-        // CIM
-        //***********
+            //agv/info
+            //rack/getEmpty
+            //rack/moveIn
+            //rack/findProduct
+             //rack/moveOut
+             //rack/setInfo
+             //rack/getInfo
+             //rack/release
 
-        /**
-         * AGVStatus
-         */
-        $("#btnAGVStatus").click(function (e) {
-            let request = document.getElementById("txtAGVStatus").value;
- 
-            let parameters = {
-                url: "https://localhost:7203/CIM/AGVStatus",
-                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-            };
-            jqHttpPost(parameters.url, parameters.data);
-            console.log(parameters);
-            //swalTip(parameters);
-        });
-
-        //DockingCheck
-        $("#btnDockingCheck").click(function (e) {
-            let request = document.getElementById("txtDockingCheck").value;
-            let parameters = {
-                url: "https://localhost:7203/CIM/DockingCheck",
-                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-            }
- 
-            jqHttpPost(parameters.url, parameters.data);
-            console.log(parameters);
-            //swalTip(parameters);
-        });
-
-        //DockingStart
-        $("#btnDockingStart").click(function (e) {
-            let request = document.getElementById("txtDockingStart").value;
-             let parameters = {
-                url: "https://localhost:7203/CIM/DockingStart",
-                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-            }
-
-            jqHttpPost(parameters.url, parameters.data);
-            console.log(parameters);
-            //swalTip(parameters);
-        });
-
-        //DockingEnd
-        $("#btnDockingEnd").click(function (e) {
-            let request = document.getElementById("txtDockingEnd").value;
-            let parameters = {
-                url: "https://localhost:7203/CIM/DockingEnd",
-                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-            }
-
-            jqHttpPost(parameters.url, parameters.data);
-            console.log(parameters);
-            //swalTip(parameters);
-        });
-
-
-        //***********
-        // GreenTrans API(待整理)
-        //***********
-
-
-    </script>
-}
+        </script>
+    }
