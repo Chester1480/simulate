@@ -1,5 +1,5 @@
 ﻿using CIMSimulate.Models;
-using CIMSimulate.Service;
+using CIMSimulate.Service.UtilS;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;

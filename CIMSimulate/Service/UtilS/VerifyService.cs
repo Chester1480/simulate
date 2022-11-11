@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CIMSimulate.Service
+namespace CIMSimulate.Service.UtilS
 {
     public class VerifyService
     {
 
 
-        public async Task<string> Verify(dynamic obj,dynamic verifyObj)
+        public async Task<string> Verify(dynamic obj, dynamic verifyObj)
         {
             var propertyInfos = obj.GetType().GetProperties();
             //propertyInfo
@@ -18,7 +18,7 @@ namespace CIMSimulate.Service
 
             foreach (var propertyInfo in propertyInfos)
             {
-              
+
             }
 
             return "0";
