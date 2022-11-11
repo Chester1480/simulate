@@ -1,17 +1,22 @@
-function swalTip(isTrue, title, text = null) {
-    va
+function swalTip(parameters) {
+    var { isTrue, title, text} = parameters;
+    let icon= 'success';
+    if(!isTrue)
+        icon = 'error';
 
     if (text == null) {
         Swal.fire({
             title,
-            confirmButtonColor: '#FF625C',
+            icon,
+            confirmButtonColor: '#333',
         })
     }
     else {
         Swal.fire({
             title,
+            icon,
             text,
-            confirmButtonColor: '#FF625C',
+            confirmButtonColor: '#333',
         })
     }
   

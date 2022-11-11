@@ -1,66 +1,295 @@
-﻿ 
-
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <li class="nav-item" role="presentation">
+﻿<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item p-1" role="presentation">
         <button class="nav-link active" id="pills-cim-tab" data-bs-toggle="pill" data-bs-target="#pills-cim"
-            type="button" role="tab" aria-controls="pills-cim" aria-selected="true">CIM</button>
+                type="button" role="tab" aria-controls="pills-cim" aria-selected="true">
+            CIM
+        </button>
     </li>
-    <li class="nav-item" role="presentation">
+    @* <li class="nav-item p-1" role="presentation">
+    <button class="nav-link" id="pills-jq-tab" data-bs-toggle="pill" data-bs-target="#pills-jq" type="button"
+    role="tab" aria-controls="pills-jq" aria-selected="false">
+    JQ
+    </button>
+    </li> *@
+    <li class="nav-item p-1" role="presentation">
         <button class="nav-link" id="pills-greentrans-tab" data-bs-toggle="pill" data-bs-target="#pills-greentrans"
-            type="button" role="tab" aria-controls="pills-greentrans" aria-selected="false">GreenTrans</button>
+                type="button" role="tab" aria-controls="pills-greentrans" aria-selected="false">
+            GreenTrans
+        </button>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
     <!-- cim -->
-    <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade show active bg-dark" id="pills-cim" role="tabpanel">
+    <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade show active bg-dark"
+         id="pills-cim" role="tabpanel">
         <div class="row p-5">
             <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">範例</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Parameter</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="inParamter">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Parameter</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="inParamter">
+                        </div>
+                    </div>
+                    <a id="btnExample" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <span class="badge bg-success">Success</span>
+                    <span class="badge bg-danger">Danger</span>
                 </div>
             </div>
+            <!--AGVStatus -->
             <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">AGVStatus [作業狀態回報]</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Parameter</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAGVStatus" class="form-control" cols="30" rows="10">
+
+                            </textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark btn-beautify">formatter</button>
+                    <a id="btnAGVStatus" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtAGVStatusResult" class="form-control" cols="30" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--DockingCheck -->
             <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">DockingCheck [確認機台作業狀況]</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Parameter</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtDockingCheck" class="form-control" cols="30" rows="10">
+
+                            </textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark btn-beautify">formatter</button>
+                    <a id="btnDockingCheck" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtDockingCheckResult" class="form-control" cols="30" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-             <div class="card w-100 text-dark bg-light mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
-                </div>
-            </div>
+            <!--DockingStart -->
             <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">DockingStart [AGV車能否停靠機台]</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Parameter</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtDockingStart" class="form-control" cols="30" rows="10">
+
+                            </textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark btn-beautify">formatter</button>
+                    <a id="btnDockingStart" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtDockingStartResult" class="form-control" cols="30" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--DockingEnd -->
             <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">DockingEnd [AGV車能否結束停靠機台]</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Parameter</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtDockingEnd" class="form-control" cols="30" rows="10">
+
+                            </textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark btn-beautify">formatter</button>
+                    <a id="btnDockingEnd" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtDockingEndResult" class="form-control" cols="30" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- jq -->
+    @* <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-jq"
+    role="tabpanel">
+    <div class="row p-5">
+    </div>
+    </div> *@
     <!-- greentrans -->
-    <div class="tab-pane fade" id="pills-greentrans" role="tabpanel">
-
+    <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-greentrans"
+         role="tabpanel">
+        <div class="row p-5">
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"> Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <span class="badge bg-success">Success</span>
+                    <span class="badge bg-danger">Danger</span>
+                </div>
+            </div>
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a class="btn btn-primary">執行</a>
+                </div>
+            </div>
+            <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a class="btn btn-primary">執行</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        const greentran_agv_api = "http://172.20.39.237:3004/";
+        const greentran_rack_api = "http://172.20.39.237:3003/";
+        //const greentran_buffer_api = "";
+
+        $(".btn-beautify").click(function (e) {
+            beautifyFormatter("txtAGVStatus");
+            beautifyFormatter("txtDockingCheck");
+            beautifyFormatter("txtDockingStart");
+            beautifyFormatter("txtDockingEnd");
+        });
+
+        $("#btnExample").click(function (e) {
+            let parameters = {
+                isTrue: true,
+                title: "成功",
+                text: "回傳參數"
+            };
+
+            swalTip(parameters);
+        });
+
+        //AGVStatus
+        $("#btnAGVStatus").click(function (e) {
+            let request = document.getElementById("txtAGVStatus").value;
+            let data = {
+                request: request
+            }
  
+            let parameters = {
+                url: "@Url.Action("AGVStatus", "CIM")" ,
+                type: "POST",
+                data: data,
+            };
+
+            jqCallJQAjax(parameters);
+            console.log(parameters);
+            //swalTip(parameters);
+        });
+
+        //DockingCheck
+        $("#btnDockingCheck").click(function (e) {
+            let request = document.getElementById("txtDockingCheck").value;
+            let data = {
+                request: request
+            }
+
+            let parameters = {
+                url: "@Url.Action("DockingCheck", "CIM")",
+                type: "POST",
+                data: data,
+            };
+
+            jqCallJQAjax(parameters);
+            console.log(parameters);
+            //swalTip(parameters);
+        });
+
+        //DockingStart
+        $("#btnDockingStart").click(function (e) {
+            let request = document.getElementById("txtDockingStart").value;
+            let data = {
+                request: request
+            }
+
+            let parameters = {
+                url: "@Url.Action("DockingStart", "CIM")",
+                type: "POST",
+                data: data,
+            };
+
+            jqCallJQAjax(parameters);
+            console.log(parameters);
+            //swalTip(parameters);
+        });
+
+        //DockingEnd
+        $("#btnDockingEnd").click(function (e) {
+            let request = document.getElementById("txtDockingEnd").value;
+            let data = {
+                request: request
+            }
+
+            let parameters = {
+                url: "@Url.Action("DockingEnd", "CIM")",
+                type: "POST",
+                data: data,
+            };
+
+            jqCallJQAjax(parameters);
+            console.log(parameters);
+            //swalTip(parameters);
+        });
+
+    </script>
+}
