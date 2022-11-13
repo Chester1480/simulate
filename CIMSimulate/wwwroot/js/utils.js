@@ -201,6 +201,13 @@ function beautifyFormatter(textareaid) {
     document.getElementById(textareaid).value = pretty;
 }
 
+function ResponseFormatter(textareaid, parameters) {
+ 
+          var pretty = JSON.stringify(parameters, undefined, 4);
+          document.getElementById(textareaid).value = pretty;
+}
+
+
 function GetAllInputValue() {
           var ids = document.getElementsByTagName('input');
           let data = {};

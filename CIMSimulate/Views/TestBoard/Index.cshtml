@@ -197,7 +197,7 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvDispatchResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtAgvDispatch" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtAgvInfo" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -242,22 +242,40 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">群組代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="group" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">貨架代碼(選填)</label>
+                        <div class="col-sm-4">
+                            <input id="rack" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">工單編號</label>
+                        <div class="col-sm-4">
+                            <input id="task" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">來源站點</label>
+                        <div class="col-sm-4">
+                            <input id="station" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnRackGetEmpty" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackGetEmpty" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -272,22 +290,46 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">物料編號(RFID)</label>
+                        <div class="col-sm-4">
+                            <input id="tag" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">貨批編號</label>
+                        <div class="col-sm-4">
+                            <input id="lot" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">工單編號</label>
+                        <div class="col-sm-4">
+                            <input id="task" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">來源站點</label>
+                        <div class="col-sm-4">
+                            <input id="station" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnRackMoveIn" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackMoveIn" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -302,22 +344,40 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">群組代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="group" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">貨架代碼(選填, 可指定)</label>
+                        <div class="col-sm-4">
+                            <input id="rack" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">物料編號(RFID)(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="tag" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">物料型態(選填, 可指定)</label>
+                        <div class="col-sm-4">
+                            <input id="type" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnRackFIndProduct" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackFIndProduct" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -332,22 +392,38 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">物料編號(RFID)(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="tag" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">
+                            true: 強制移出(選填)
+                            false: 檢查移出資料正確性(預
+                            設)
+                        </label>
+                        <div class="col-sm-4">
+                            <input id="force" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnRackMoveOut" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackMoveOut" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -362,22 +438,28 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">狀態文字(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="status" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnRackSetInfo" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackSetInfo" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -392,22 +474,22 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <a id="btnRackGetInfo" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackGetInfo" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -422,22 +504,22 @@
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_vehicle" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="info_destination" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control">
                         </div>
                     </div>
-                    <a id="btnAgvInfo" class="btn btn-primary">執行</a>
+                    <a id="btnRackRelease" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
                         <div class="col-sm-6">
-                            <textarea id="txtAgvInfoResult" class="form-control" cols="20" rows="10" readonly>
+                            <textarea id="txtRackRelease" class="form-control" cols="20" rows="10" readonly>
                             </textarea>
                         </div>
                     </div>
@@ -540,25 +622,154 @@
                 for (var i = 0; i < inputs.length; i++) {
                     object[inputs[i].id] = inputs[i].value;
                 }
- 
+
 
                 let parameters = {
                     url: `${ greentran_agv_api }/agv/dispatch`,
                     data: object,
                 }
 
-                //jqHttpPost(parameters.url, parameters.data);
                 console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtAgvDispatch", response);
             });
 
             //agv/info
+            $("#btnAgvInfo").click(function (e) {
+                const inputs = document.querySelectorAll('#agvInfo input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_agv_api }/agv/agvInfo`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtAgvInfo", response);
+            });
             //rack/getEmpty
+            $("#btnRackGetEmpty").click(function (e) {
+                const inputs = document.querySelectorAll('#rackGetEmpty input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/getEmpty`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackGetEmpty", response);
+            });
             //rack/moveIn
+            $("#btnRackMoveIn").click(function (e) {
+                const inputs = document.querySelectorAll('#rackMoveIn input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/moveIn`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackMoveIn", response);
+            });
             //rack/findProduct
-             //rack/moveOut
-             //rack/setInfo
-             //rack/getInfo
-             //rack/release
+            $("#btnRackFIndProduct").click(function (e) {
+                const inputs = document.querySelectorAll('#rackFindProduct input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/findProduct`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackFIndProduct", response);
+            });
+            //rack/moveOut
+            $("#btnRackMoveOut").click(function (e) {
+                const inputs = document.querySelectorAll('#rackMoveOut input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/moveOut`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackMoveOut", response);
+            });
+            //rack/setInfo
+            $("#btnRackSetInfo").click(function (e) {
+                const inputs = document.querySelectorAll('#rackSetInfo input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/setInfo`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackSetInfo", response);
+            });
+            //rack/getInfo
+            $("#btnRackGetInfo").click(function (e) {
+                const inputs = document.querySelectorAll('#rackGetInfo input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/getInfo`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackGetInfo", response);
+            });
+            //rack/release
+            $("#btnRackRelease").click(function (e) {
+                const inputs = document.querySelectorAll('#rackRelease input');
+                let object = {};
+                for (var i = 0; i < inputs.length; i++) {
+                    object[inputs[i].id] = inputs[i].value;
+                }
+
+                let parameters = {
+                    url: `${ greentran_rack_api }/rack/release`,
+                    data: object,
+                }
+
+                console.log(parameters);
+                //var response =  jqHttpPost(parameters.url, parameters.data);
+                ResponseFormatter("txtRackRelease", response);
+            });
 
         </script>
     }
