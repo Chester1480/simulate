@@ -119,58 +119,151 @@ namespace CIMSimulate.Controllers
         public async Task<dynamic> AGVStatus([FromBody]dynamic parameters)
         {
                          
+            var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
+            #region
+            //{
+            //    "TIMESTAMP": "2022/11/01 18:29:36",
+            //    "TASKNAME": "20220915000133098777______XPDB",
+            //    "AGVID": "MR101",
+            //    "ELECTRICVOLUMN": "0.66",
+            //    "TASKTYPE": "S",
+            //    "LOTID": "04B3UGW003",
+            //    "POSITION": "777",
+            //    "ERRMSG": ""
+            //}
+            #endregion
 
-                              var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
-                              string TIMESTAMP = payload.TIMESTAMP;
-                              //var test = parameters.GetType().GetProperties;
-                              //string test = parameters.TIMESTAMP;
+            string apiUrl = GetApiUrl();
 
-                              string apiUrl = GetApiUrl();
-            //組xml
-            var xmlParameters = BuildAGVStatusXmldata(parameters);
+            //組xml parameters
+            var serializeString = JsonConvert.SerializeObject(payload);
+
+            string xmlString = $@"
+            <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">  
+                  <soap:Body>  
+                    <ServiceProvider  xmlns=""http://tempuri.org/"">  
+                      <funcName>AGVStatus</funcName>
+                      <paraMessage>
+                      {serializeString}
+                      </paraMessage>
+                      </ServiceProvider>  
+                  </soap:Body>  
+            </soap:Envelope>
+            ";
             //post
-            //var response = await _httpService.HttpPostAsync(apiUrl, xmlParameters);
-            return "11";
+            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
+            return new
+            {
+                code = "1",
+                message = "執行成功",
+                data = response
+            };
         }
 
         [HttpPost]
         public async Task<dynamic> DockingStart([FromBody] dynamic parameters)
         {
+            var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
             string apiUrl = GetApiUrl();
             //組xml
-            var xmlParameters = BuildDockingXmldata(parameters);
+            //var xmlParameters = BuildDockingXmldata(parameters);
+            string xmlString = $@"
+                <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">  
+                    <soap:Body>  
+                    <DockCheck  xmlns=""http://tempuri.org/"">  
+                        <CMD>DockingStart</CMD>
+                        <EQPNAME>{payload.EQPNAME+""}</EQPNAME>
+                        <EQPID>{payload.EQPID + ""}</EQPID>
+                        <AGVNAME>{payload.AGVNAME + ""}</AGVNAME>
+                        <AGVIP>{payload.AGVIP + ""}</AGVIP>
+                        <PORT>{payload.PORT + ""}</PORT>
+                        <AGVSTATUS>{payload.AGVSTATUS + ""}</AGVSTATUS>
+                        <rtnMessage></rtnMessage>              
+                    </DockCheck>  
+                    </soap:Envelope>              
+                </soap:Body>  
+            ";
 
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlParameters);
-            return response;
+            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
+            return new
+            {
+                code = "1",
+                message = "執行成功",
+                data = response
+            };
         }
 
         [HttpPost]
         public async Task<dynamic> DockingEnd([FromBody] dynamic parameters)
         {
+            var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
             string apiUrl = GetApiUrl();
             //組xml
-            var xmlParameters = BuildDockingXmldata(parameters);
+            //var xmlParameters = BuildDockingXmldata(parameters);
+            string xmlString = $@"
+                <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">  
+                    <soap:Body>  
+                    <DockCheck  xmlns=""http://tempuri.org/"">  
+                        <CMD>DockingEnd</CMD>
+                        <EQPNAME>{payload.EQPNAME + ""}</EQPNAME>
+                        <EQPID>{payload.EQPID + ""}</EQPID>
+                        <AGVNAME>{payload.AGVNAME + ""}</AGVNAME>
+                        <AGVIP>{payload.AGVIP + ""}</AGVIP>
+                        <PORT>{payload.PORT + ""}</PORT>
+                        <AGVSTATUS>{payload.AGVSTATUS + ""}</AGVSTATUS>
+                        <rtnMessage></rtnMessage>   
+                    </DockCheck>  
+                    </soap:Envelope>              
+                </soap:Body>  
+            ";
 
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlParameters);
-            return response;
+            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
+            return new
+            {
+                code = "1",
+                message = "執行成功",
+                data = response
+            };
         }
 
         [HttpPost]
         public async Task<dynamic> DockingCheck([FromBody] dynamic parameters)
         {
+            var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
             string apiUrl = GetApiUrl();
             //組xml
-            var xmlParameters = BuildDockingXmldata(parameters);
+            //var xmlParameters = BuildDockingXmldata(parameters);
+            string xmlString = $@"
+                <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">  
+                    <soap:Body>  
+                    <DockCheck  xmlns=""http://tempuri.org/"">  
+                        <CMD>DockingCheck</CMD>
+                        <EQPNAME>{payload.EQPNAME + ""}</EQPNAME>
+                        <EQPID>{payload.EQPID + ""}</EQPID>
+                        <AGVNAME>{payload.AGVNAME + ""}</AGVNAME>
+                        <AGVIP>{payload.AGVIP + ""}</AGVIP>
+                        <PORT>{payload.PORT + ""}</PORT>
+                        <AGVSTATUS>{payload.AGVSTATUS + ""}</AGVSTATUS>
+                        <rtnMessage></rtnMessage>   
+                    </DockCheck>  
+                    </soap:Envelope>              
+                </soap:Body>  
+            ";
 
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlParameters);
-            return response;
+            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
+            return new
+            {
+                code = "1",
+                message = "執行成功",
+                data = response
+            };
         }
 
         [HttpPost]
         public async Task<IActionResult> GetLastWorkOrder()
         {
             var result = await _jqservice.GetLastWorkOrder();
-            return Ok(result);
+            return Ok(result );
         }
 
     }

@@ -1,7 +1,7 @@
-function jqHttpPost(apiUrl,data) {
-    return new Promise(function (resolve, reject) {
+async function jqHttpPost(apiUrl,data) {
+    return new Promise(async function (resolve, reject) {
         try {
-            const rawResponse = fetch(apiUrl, {
+            const rawResponse =  await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -9,14 +9,14 @@ function jqHttpPost(apiUrl,data) {
                 },
                 body: JSON.stringify(data)
             });
-            const content = rawResponse.json();
-            resolve(content.json()); // 正確完成的回傳方法
+            resolve(rawResponse.json()); // 正確完成的回傳方法
         } catch (e) {
+            //console.log(e)
             reject(`${apiUrl} post失敗 發生錯誤`);  // 失敗的回傳方法
         }
     });
 }
-function jqHttpGet(apiUrl, params) {
+async function jqHttpGet(apiUrl, params) {
     return new Promise(function (resolve, reject) {
         try {
 
@@ -32,8 +32,7 @@ function jqHttpGet(apiUrl, params) {
                     'Content-Type': 'application/json'
                 },
             });
-            const content =  rawResponse.json();
-            resolve(content.json());
+            resolve(rawResponse.json());
         } catch (e) {
             reject(`${apiUrl} get失敗 發生錯誤`)
         }
