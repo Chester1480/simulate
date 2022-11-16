@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System.Globalization;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Xml;
 
 namespace CIMSimulate.Service.UtilS
 {
@@ -241,6 +243,49 @@ namespace CIMSimulate.Service.UtilS
             string result = sr.ReadToEnd();
             //Console.WriteLine(ts + " WM debug result: " + result);
             return result;
+        }
+
+
+        /// <summary>
+        /// SOAP WebRequest POST
+        /// </summary>
+        /// <param name="apiUrl"></param>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
+        public string SOAPWebRequest(string apiUrl, string xmlString)
+        { 
+            XmlDocument xml = new XmlDocument();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(apiUrl);
+
+            request.ContentType = "text/xml; charset=utf-8";
+            request.Method = "POST";
+            Console.WriteLine("xml: " + xmlString);
+            xml.LoadXml(xmlString);
+
+            using (Stream stream = request.GetRequestStream())
+            {
+                xml.Save(stream);
+            }
+
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        var result = sr.ReadToEnd();
+                        Console.WriteLine("response result: " + result);
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error message: " + ex.Message);
+                Console.WriteLine("error stackTrace: " + ex.StackTrace);
+                throw ex;
+            }
+       
         }
     }
 

@@ -116,7 +116,7 @@ namespace CIMSimulate.Controllers
                     //}
 
         [HttpPost]
-        public async Task<dynamic> AGVStatus([FromBody]dynamic parameters)
+        public IActionResult AGVStatus([FromBody]dynamic parameters)
         {
                          
             var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
@@ -148,20 +148,20 @@ namespace CIMSimulate.Controllers
                       </paraMessage>
                       </ServiceProvider>  
                   </soap:Body>  
-            </soap:Envelope>
-            ";
+            </soap:Envelope>";
             //post
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
-            return new
+            var response = _httpService.SOAPWebRequest(apiUrl, xmlString);
+
+            return Ok(new
             {
                 code = "1",
                 message = "執行成功",
                 data = response
-            };
+            });
         }
 
         [HttpPost]
-        public async Task<dynamic> DockingStart([FromBody] dynamic parameters)
+        public IActionResult DockingStart([FromBody] dynamic parameters)
         {
             var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
             string apiUrl = GetApiUrl();
@@ -179,22 +179,21 @@ namespace CIMSimulate.Controllers
                         <PORT>{payload.PORT + ""}</PORT>
                         <AGVSTATUS>{payload.AGVSTATUS + ""}</AGVSTATUS>
                         <rtnMessage></rtnMessage>              
-                    </DockCheck>  
-                    </soap:Envelope>              
-                </soap:Body>  
-            ";
+                    </DockCheck>                           
+                    </soap:Body>  
+                </soap:Envelope>";
 
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
-            return new
+            var response =  _httpService.SOAPWebRequest(apiUrl, xmlString);
+            return Ok(new
             {
                 code = "1",
                 message = "執行成功",
                 data = response
-            };
+            });
         }
-
+ 
         [HttpPost]
-        public async Task<dynamic> DockingEnd([FromBody] dynamic parameters)
+        public IActionResult DockingEnd([FromBody] dynamic parameters)
         {
             var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
             string apiUrl = GetApiUrl();
@@ -213,21 +212,20 @@ namespace CIMSimulate.Controllers
                         <AGVSTATUS>{payload.AGVSTATUS + ""}</AGVSTATUS>
                         <rtnMessage></rtnMessage>   
                     </DockCheck>  
-                    </soap:Envelope>              
-                </soap:Body>  
-            ";
+                    </soap:Body>
+                </soap:Envelope>";
 
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
-            return new
+            var response = _httpService.SOAPWebRequest(apiUrl, xmlString);
+            return Ok(new
             {
                 code = "1",
                 message = "執行成功",
                 data = response
-            };
+            });
         }
 
         [HttpPost]
-        public async Task<dynamic> DockingCheck([FromBody] dynamic parameters)
+        public IActionResult DockingCheck([FromBody] dynamic parameters)
         {
             var payload = JsonConvert.DeserializeObject<dynamic>(parameters);
             string apiUrl = GetApiUrl();
@@ -245,25 +243,24 @@ namespace CIMSimulate.Controllers
                         <PORT>{payload.PORT + ""}</PORT>
                         <AGVSTATUS>{payload.AGVSTATUS + ""}</AGVSTATUS>
                         <rtnMessage></rtnMessage>   
-                    </DockCheck>  
-                    </soap:Envelope>              
-                </soap:Body>  
-            ";
+                    </DockCheck>                                
+                    </soap:Body>  
+                </soap:Envelope>";
 
-            var response = await _httpService.HttpPostAsync(apiUrl, xmlString);
-            return new
+            var response = _httpService.SOAPWebRequest(apiUrl, xmlString);
+            return Ok(new
             {
                 code = "1",
                 message = "執行成功",
                 data = response
-            };
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> GetLastWorkOrder()
         {
             var result = await _jqservice.GetLastWorkOrder();
-            return Ok(result );
+            return Ok(result); 
         }
 
     }

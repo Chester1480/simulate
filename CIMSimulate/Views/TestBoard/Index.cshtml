@@ -1,6 +1,6 @@
 ﻿<style>
-    textarea{
-              resize:none;
+    textarea {
+        resize: none;
     }
 </style>
 
@@ -11,12 +11,6 @@
             CIM
         </button>
     </li>
-    @* <li class="nav-item p-1" role="presentation">
-    <button class="nav-link" id="pills-jq-tab" data-bs-toggle="pill" data-bs-target="#pills-jq" type="button"
-    role="tab" aria-controls="pills-jq" aria-selected="false">
-    JQ
-    </button>
-    </li> *@
     <li class="nav-item p-1" role="presentation">
         <button class="nav-link" id="pills-greentrans-tab" data-bs-toggle="pill" data-bs-target="#pills-greentrans"
                 type="button" role="tab" aria-controls="pills-greentrans" aria-selected="false">
@@ -29,28 +23,22 @@
     <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade show active bg-dark"
          id="pills-cim" role="tabpanel">
         <div class="row p-5">
+
+
+            <!--GetFreshWorkOrder -->
             <div class="card w-100 text-dark bg-light mb-3">
                 <div class="card-header">
-                    <h5 class="card-title">範例</h5>
+                    <h5 class="card-title">取得當前工單號的相關參數</h5>
                 </div>
                 <div class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">Parameter</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="inParamter">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtGetFreshWorkOrderResult" class="form-control" cols="30" rows="10" readonly>
+                            </textarea>
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">Parameter</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="inParamter">
-                        </div>
-                    </div>
-                    <a id="btnExample" class="btn btn-primary">執行</a>
-                </div>
-                <div class="card-footer">
-                    <span class="badge bg-success">Success</span>
-                    <span class="badge bg-danger">Danger</span>
+                    <a id="btnGetFreshWorkOrderResult" class="btn btn-primary">執行</a>
                 </div>
             </div>
             <!--AGVStatus -->
@@ -73,7 +61,7 @@
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-10">
                             <textarea id="txtAGVStatusResult" class="form-control" cols="30" rows="10" readonly>
                             </textarea>
                         </div>
@@ -100,7 +88,7 @@
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-10">
                             <textarea id="txtDockingCheckResult" class="form-control" cols="30" rows="10" readonly>
                             </textarea>
                         </div>
@@ -127,7 +115,7 @@
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-10">
                             <textarea id="txtDockingStartResult" class="form-control" cols="30" rows="10" readonly>
                             </textarea>
                         </div>
@@ -154,7 +142,7 @@
                 <div class="card-footer">
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">結果</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-10">
                             <textarea id="txtDockingEndResult" class="form-control" cols="30" rows="10" readonly>
                             </textarea>
                         </div>
@@ -163,12 +151,7 @@
             </div>
         </div>
     </div>
-    <!-- jq -->
-    @* <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-jq"
-    role="tabpanel">
-    <div class="row p-5">
-    </div>
-    </div> *@
+
     <!-- greentrans -->
     <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-greentrans"
          role="tabpanel">
@@ -180,15 +163,15 @@
                 </div>
                 <div id="agvDispatch" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">vehicle 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="vehicle" type="text" class="form-control">
+                            <input id="vehicle" type="text" class="form-control" placeholder="ex: 1">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">destination 目標點位(必填)</label>
                         <div class="col-sm-4">
-                            <input id="destination" type="text" class="form-control">
+                            <input id="destination" type="text" class="form-control" placeholder="ex: 333">
                         </div>
                     </div>
                     <a id="btnAgvDispatch" class="btn btn-primary">執行</a>
@@ -210,15 +193,15 @@
                 </div>
                 <div id="agvInfo" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">vehicle 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="vehicle" type="text" class="form-control">
+                            <input id="vehicle" type="text" class="form-control" placeholder="ex: 1">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">目標點位(必填)</label>
+                        <label class="col-sm-2 col-form-label">destination 目標點位(必填)</label>
                         <div class="col-sm-4">
-                            <input id="destination" type="text" class="form-control">
+                            <input id="destination" type="text" class="form-control" placeholder="ex: 333">
                         </div>
                     </div>
                     <a id="btnAgvInfo" class="btn btn-primary">執行</a>
@@ -240,31 +223,31 @@
                 </div>
                 <div id="rackGetEmpty" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">群組代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">group 群組代碼(必填)</label>
                         <div class="col-sm-4">
                             <input id="group" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">貨架代碼(選填)</label>
+                        <label class="col-sm-2 col-form-label">rack 貨架代碼(選填)</label>
                         <div class="col-sm-4">
-                            <input id="rack" type="text" class="form-control">
+                            <input id="rack" type="text" class="form-control" placeholder="ex: RK101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">工單編號</label>
+                        <label class="col-sm-2 col-form-label">task 工單編號</label>
                         <div class="col-sm-4">
                             <input id="task" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">來源站點</label>
+                        <label class="col-sm-2 col-form-label">station 來源站點</label>
                         <div class="col-sm-4">
                             <input id="station" type="text" class="form-control">
                         </div>
@@ -288,37 +271,37 @@
                 </div>
                 <div id="rackMoveIn" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="cell" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control" placeholder="ex: RK101A01">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">物料編號(RFID)</label>
+                        <label class="col-sm-2 col-form-label">tag 物料編號(RFID)</label>
                         <div class="col-sm-4">
-                            <input id="tag" type="text" class="form-control">
+                            <input id="tag" type="text" class="form-control" placeholder="ex: FO000058T">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">貨批編號</label>
+                        <label class="col-sm-2 col-form-label">lot 貨批編號</label>
                         <div class="col-sm-4">
                             <input id="lot" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">工單編號</label>
+                        <label class="col-sm-2 col-form-label">task 工單編號</label>
                         <div class="col-sm-4">
                             <input id="task" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">來源站點</label>
+                        <label class="col-sm-2 col-form-label">station 來源站點</label>
                         <div class="col-sm-4">
                             <input id="station" type="text" class="form-control">
                         </div>
@@ -342,31 +325,31 @@
                 </div>
                 <div id="rackFindProduct" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">群組代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">group 群組代碼(必填)</label>
                         <div class="col-sm-4">
                             <input id="group" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">貨架代碼(選填, 可指定)</label>
+                        <label class="col-sm-2 col-form-label">rack 貨架代碼(選填, 可指定)</label>
                         <div class="col-sm-4">
-                            <input id="rack" type="text" class="form-control">
+                            <input id="rack" type="text" class="form-control" placeholder="ex: RK101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">物料編號(RFID)(必填)</label>
+                        <label class="col-sm-2 col-form-label">tag 物料編號(RFID)(必填)</label>
                         <div class="col-sm-4">
-                            <input id="tag" type="text" class="form-control">
+                            <input id="tag" type="text" class="form-control" placeholder="ex: FO000058T">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">物料型態(選填, 可指定)</label>
+                        <label class="col-sm-2 col-form-label">type 物料型態(選填, 可指定)</label>
                         <div class="col-sm-4">
                             <input id="type" type="text" class="form-control">
                         </div>
@@ -386,29 +369,32 @@
             <!--rack/moveOut -->
             <div class="card w-100 text-dark bg-light mb-3">
                 <div class="card-header">
-                    <h5 class="card-title">rack/moveOut [以物料資訊查詢所在物料所在儲格資訊]</h5>
+                    <h5 class="card-title">
+                        rack/moveOut [物料資訊出倉(清除)]
+                    </h5>
                 </div>
                 <div id="rackMoveOut" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="cell" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control" placeholder="ex: RK101A01">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">物料編號(RFID)(必填)</label>
+                        <label class="col-sm-2 col-form-label">tag 物料編號(RFID)(必填)</label>
                         <div class="col-sm-4">
-                            <input id="tag" type="text" class="form-control">
+                            <input id="tag" type="text" class="form-control" placeholder="ex: FO000058T">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">
+                            force 
                             true: 強制移出(選填)
                             false: 檢查移出資料正確性(預
                             設)
@@ -436,19 +422,19 @@
                 </div>
                 <div id="rackSetInfo" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="cell" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control" placeholder="ex: RK101A01">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">狀態文字(必填)</label>
+                        <label class="col-sm-2 col-form-label">status 狀態文字(必填)</label>
                         <div class="col-sm-4">
                             <input id="status" type="text" class="form-control">
                         </div>
@@ -472,15 +458,15 @@
                 </div>
                 <div id="rackGetInfo" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="cell" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control" placeholder="ex: RK101A01">
                         </div>
                     </div>
                     <a id="btnRackGetInfo" class="btn btn-primary">執行</a>
@@ -502,15 +488,15 @@
                 </div>
                 <div id="rackRelease" class="card-body">
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">車輛代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="origin" type="text" class="form-control">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">儲位代碼(必填)</label>
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
                         <div class="col-sm-4">
-                            <input id="cell" type="text" class="form-control">
+                            <input id="cell" type="text" class="form-control" placeholder="ex: RK101A01">
                         </div>
                     </div>
                     <a id="btnRackRelease" class="btn btn-primary">執行</a>
@@ -527,249 +513,331 @@
             </div>
         </div>
     </div>
+</div>
+@section scripts{
+    <script>
+        let url = location.protocol + '//' + location.host;
+        const greentran_agv_api = "http://172.20.39.237:3004";
+        const greentran_rack_api = "http://172.20.39.237:3003";
+        //const greentran_buffer_api = "";
 
-    @section scripts{
-        <script>
-            const greentran_agv_api = "http://172.20.39.237:3004";
-            const greentran_rack_api = "http://172.20.39.237:3003";
-            //const greentran_buffer_api = "";
-
-            $(".btn-beautify").click(function (e) {
-                beautifyFormatter("txtAGVStatus");
-                beautifyFormatter("txtDockingCheck");
-                beautifyFormatter("txtDockingStart");
-                beautifyFormatter("txtDockingEnd");
-            });
-
-            $("#btnExample").click(function (e) {
-                let parameters = {
-                    isTrue: true,
-                    title: "成功",
-                    text: "回傳參數"
-                };
-
-                swalTip(parameters);
-            });
-
-
-            //***********
-            // CIM
-            //***********
-
-            /**
-             * AGVStatus
-             */
-            $("#btnAGVStatus").click(function (e) {
-                let request = document.getElementById("txtAGVStatus").value;
-
-                let parameters = {
-                    url: "https://localhost:7203/CIM/AGVStatus",
-                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-                };
-                jqHttpPost(parameters.url, parameters.data);
-                console.log(parameters);
-                //swalTip(parameters);
-            });
+        document.addEventListener("DOMContentLoaded", async function (event) {
+            //AGVStatus
+            var objAgvStatus = {
+                "TIMESTAMP": "2022/11/10 17:45:04",
+                "TASKNAME": "20220915000133098777______XPDB",
+                "AGVID": "MR101",
+                "ELECTRICVOLUMN": "0.66",
+                "TASKTYPE": "S",
+                "LOTID": "04B3UGW003",
+                "POSITION": "2191",
+                "ERRMSG": ""
+            };
+            document.getElementById("txtAGVStatus").value = JSON.stringify(objAgvStatus, undefined, 4);
 
             //DockingCheck
-            $("#btnDockingCheck").click(function (e) {
-                let request = document.getElementById("txtDockingCheck").value;
-                let parameters = {
-                    url: "https://localhost:7203/CIM/DockingCheck",
-                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-                }
-
-                jqHttpPost(parameters.url, parameters.data);
-                console.log(parameters);
-                //swalTip(parameters);
-            });
-
+            var objDockingCheck = {
+                "EQPNAME": "E0065821",
+                "EQPID": "ASE21-2190-A01",
+                "AGVNAME": "MR101",
+                "AGVIP": "172.20.95.41",
+                "PORT": "1",
+                "AGVSTATUS": "Put in"
+            };
+            document.getElementById("txtDockingCheck").value = JSON.stringify(objDockingCheck, undefined, 4);            
             //DockingStart
-            $("#btnDockingStart").click(function (e) {
-                let request = document.getElementById("txtDockingStart").value;
-                let parameters = {
-                    url: "https://localhost:7203/CIM/DockingStart",
-                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-                }
-
-                jqHttpPost(parameters.url, parameters.data);
-                console.log(parameters);
-                //swalTip(parameters);
-            });
-
+            var objDockingStart = {
+                "EQPNAME": "E0065821",
+                "EQPID": "ASE21-2190-A01",
+                "AGVNAME": "MR101",
+                "AGVIP": "172.20.95.41",
+                "PORT": "1",
+                "AGVSTATUS": "Put in"
+            };
+            document.getElementById("txtDockingStart").value = JSON.stringify(objDockingStart, undefined, 4);
             //DockingEnd
-            $("#btnDockingEnd").click(function (e) {
-                let request = document.getElementById("txtDockingEnd").value;
-                let parameters = {
-                    url: "https://localhost:7203/CIM/DockingEnd",
-                    data: request.replace(/(?:\r\n|\r|\n)/g, ''),
-                }
+            var objDockingEnd = {
+                "EQPNAME": "E0065821",
+                "EQPID": "ASE21-2190-A01",
+                "AGVNAME": "MR101",
+                "AGVIP": "172.20.95.41",
+                "PORT": "1",
+                "AGVSTATUS": "Put in"
+            };
+            document.getElementById("txtDockingEnd").value = JSON.stringify(objDockingEnd, undefined, 4);
 
-                jqHttpPost(parameters.url, parameters.data);
-                console.log(parameters);
-                //swalTip(parameters);
-            });
+        });
+
+        $(".btn-beautify").click(function (e) {
+            beautifyFormatter("txtAGVStatus");
+            beautifyFormatter("txtDockingCheck");
+            beautifyFormatter("txtDockingStart");
+            beautifyFormatter("txtDockingEnd");
+        });
+
+        $("#btnExample").click(function (e) {
+            let parameters = {
+                isTrue: true,
+                title: "成功",
+                text: "回傳參數"
+            };
+
+            swalTip(parameters);
+        });
 
 
-            //***********
-            // GreenTrans API(未完成)
-            //***********
+        //***********
+        // CIM
+        //***********
 
-            //agvDispatch
-            $("#btnAgvDispatch").click(function (e) {
-                const inputs = document.querySelectorAll('#agvDispatch input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+        /**
+        * GetFreshWorkderOrder
+        */
+        $("#btnGetFreshWorkOrderResult").click(async function (e) {
+                  var request = "";
+            console.log(url)
+            let parameters = {
+                url: url + "/CIM/GetLastWorkOrder",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            };
+            var result = await jqHttpPost(parameters.url, parameters.data);
+
+            //var test = {
+            //                      "id_ipc": 67,
+            //                      "id_mcs": 131,
+            //                      "timestamp": "2022/10/06 17:36:44",
+            //                      "task_name": "20220915000133098777______XPDB",
+            //                      "lot_id": "04BDHDW001",
+            //                      "tag_id": "CS000088G",
+            //                      "box_type": "CS8G",
+            //                      "from_location": "RK101",
+            //                      "to_location": "E0127477",
+            //                      "type": "Load",
+            //                      "port_id": "PORT1",
+            //                      "end_tray": "N",
+            //                      "task_id": 0,
+            //                      "enable": 1,
+            //                      "create_id": 0,
+            //                      "create_time": "2022-10-12T05:29:13",
+            //                      "update_id": 0,
+            //                      "update_time": "2022-10-12T05:29:13"
+            //                    };
+            //swalTip(parameters);
+
+            ResponseFormatter("txtGetFreshWorkOrderResult", result);
+        });
 
 
-                let parameters = {
-                    url: `${ greentran_agv_api }/agv/dispatch`,
-                    data: object,
-                }
+        /**
+         * AGVStatus
+         */
+        $("#btnAGVStatus").click(async function (e) {
+            let request = document.getElementById("txtAGVStatus").value;
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtAgvDispatch", response);
-            });
+            let parameters = {
+                url: url + "/CIM/AGVStatus",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            };
 
-            //agv/info
-            $("#btnAgvInfo").click(function (e) {
-                const inputs = document.querySelectorAll('#agvInfo input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            //swalTip(parameters);
+            ResponseFormatter("txtAGVStatusResult", response.data);
+        });
 
-                let parameters = {
-                    url: `${ greentran_agv_api }/agv/agvInfo`,
-                    data: object,
-                }
+        //DockingCheck
+        $("#btnDockingCheck").click(async function (e) {
+            let request = document.getElementById("txtDockingCheck").value;
+            let parameters = {
+                url: url + "/CIM/DockingCheck",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtAgvInfo", response);
-            });
-            //rack/getEmpty
-            $("#btnRackGetEmpty").click(function (e) {
-                const inputs = document.querySelectorAll('#rackGetEmpty input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            //swalTip(parameters);
+            ResponseFormatter("txtDockingCheckResult", response.data);
+        });
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/getEmpty`,
-                    data: object,
-                }
+        //DockingStart
+        $("#btnDockingStart").click(async function (e) {
+            let request = document.getElementById("txtDockingStart").value;
+            let parameters = {
+                url: url + "/CIM/DockingStart",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackGetEmpty", response);
-            });
-            //rack/moveIn
-            $("#btnRackMoveIn").click(function (e) {
-                const inputs = document.querySelectorAll('#rackMoveIn input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            //swalTip(parameters);
+            ResponseFormatter("txtDockingStartResult", response.data);
+            
+        });
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/moveIn`,
-                    data: object,
-                }
+        //DockingEnd
+        $("#btnDockingEnd").click(async function (e) {
+            let request = document.getElementById("txtDockingEnd").value;
+            let parameters = {
+                url: url + "/CIM/DockingEnd",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackMoveIn", response);
-            });
-            //rack/findProduct
-            $("#btnRackFIndProduct").click(function (e) {
-                const inputs = document.querySelectorAll('#rackFindProduct input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            //swalTip(parameters);
+            ResponseFormatter("txtDockingEndResult", response.data);
+        });
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/findProduct`,
-                    data: object,
-                }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackFIndProduct", response);
-            });
-            //rack/moveOut
-            $("#btnRackMoveOut").click(function (e) {
-                const inputs = document.querySelectorAll('#rackMoveOut input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+        //***********
+        // GreenTrans API(未完成)
+        //***********
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/moveOut`,
-                    data: object,
-                }
+        //agvDispatch
+        $("#btnAgvDispatch").click(async function (e) {
+            const inputs = document.querySelectorAll('#agvDispatch input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackMoveOut", response);
-            });
-            //rack/setInfo
-            $("#btnRackSetInfo").click(function (e) {
-                const inputs = document.querySelectorAll('#rackSetInfo input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/setInfo`,
-                    data: object,
-                }
+            let parameters = {
+                url: `${greentran_agv_api}/agv/dispatch`,
+                data: object,
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackSetInfo", response);
-            });
-            //rack/getInfo
-            $("#btnRackGetInfo").click(function (e) {
-                const inputs = document.querySelectorAll('#rackGetInfo input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtAgvDispatch", response);
+        });
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/getInfo`,
-                    data: object,
-                }
+        //agv/info
+        $("#btnAgvInfo").click(async function (e) {
+            const inputs = document.querySelectorAll('#agvInfo input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackGetInfo", response);
-            });
-            //rack/release
-            $("#btnRackRelease").click(function (e) {
-                const inputs = document.querySelectorAll('#rackRelease input');
-                let object = {};
-                for (var i = 0; i < inputs.length; i++) {
-                    object[inputs[i].id] = inputs[i].value;
-                }
+            let parameters = {
+                url: `${greentran_agv_api}/agv/Info`,
+                data: object,
+            }
 
-                let parameters = {
-                    url: `${ greentran_rack_api }/rack/release`,
-                    data: object,
-                }
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtAgvInfo", response);
+        });
+        //rack/getEmpty
+        $("#btnRackGetEmpty").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackGetEmpty input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
 
-                console.log(parameters);
-                //var response =  jqHttpPost(parameters.url, parameters.data);
-                ResponseFormatter("txtRackRelease", response);
-            });
+            let parameters = {
+                url: `${greentran_rack_api}/rack/getEmpty`,
+                data: object,
+            }
 
-        </script>
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackGetEmpty", response);
+        });
+        //rack/moveIn
+        $("#btnRackMoveIn").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackMoveIn input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
+
+            let parameters = {
+                url: `${greentran_rack_api}/rack/moveIn`,
+                data: object,
+            }
+
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackMoveIn", response);
+        });
+        //rack/findProduct
+        $("#btnRackFIndProduct").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackFindProduct input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
+
+            let parameters = {
+                url: `${greentran_rack_api}/rack/findProduct`,
+                data: object,
+            }
+
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackFIndProduct", response);
+        });
+        //rack/moveOut
+        $("#btnRackMoveOut").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackMoveOut input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
+
+            let parameters = {
+                url: `${greentran_rack_api}/rack/moveOut`,
+                data: object,
+            }
+
+            console.log(parameters);
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackMoveOut", response);
+        });
+        //rack/setInfo
+        $("#btnRackSetInfo").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackSetInfo input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
+
+            let parameters = {
+                url: `${greentran_rack_api}/rack/setInfo`,
+                data: object,
+            }
+
+            console.log(parameters);
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackSetInfo", response);
+        });
+        //rack/getInfo
+        $("#btnRackGetInfo").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackGetInfo input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
+
+            let parameters = {
+                url: `${greentran_rack_api}/rack/getInfo`,
+                data: object,
+            }
+
+            console.log(parameters);
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackGetInfo", response);
+        });
+        //rack/release
+        $("#btnRackRelease").click(async function (e) {
+            const inputs = document.querySelectorAll('#rackRelease input');
+            let object = {};
+            for (var i = 0; i < inputs.length; i++) {
+                object[inputs[i].id] = inputs[i].value;
+            }
+
+            let parameters = {
+                url: `${greentran_rack_api}/rack/release`,
+                data: object,
+            }
+
+            var response = await jqHttpPost(parameters.url, parameters.data);
+            ResponseFormatter("txtRackRelease", response);
+        });
+
+    </script>
     }
