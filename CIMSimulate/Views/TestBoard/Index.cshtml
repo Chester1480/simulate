@@ -23,8 +23,6 @@
     <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade show active bg-dark"
          id="pills-cim" role="tabpanel">
         <div class="row p-5">
-
-
             <!--GetFreshWorkOrder -->
             <div class="card w-100 text-dark bg-light mb-3">
                 <div class="card-header">
@@ -47,15 +45,71 @@
                     <h5 class="card-title">AGVStatus [作業狀態回報]</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">Parameter</label>
-                        <div class="col-sm-6">
-                            <textarea id="txtAGVStatus" class="form-control" cols="30" rows="10">
+                    <ul class="nav nav-pills mb-3" role="tablist">
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#agvstatus-parameter"
+                                    type="button" role="tab">
+                                Parameter
+                            </button>
+                        </li>
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#agvstatus-body"
+                                    type="button" role="tab">
+                                Body
+                            </button>
+                        </li>
+                    </ul>
 
-                            </textarea>
+                    <div class="tab-content">
+                        <!--AGVStatus - Parameter -->
+                        <div class="tab-pane fade show active  " id="agvstatus-parameter" role="tabpanel">
+                            <!-- AGVID -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVID (必填)</label>
+
+                                <div class="col-sm-4">
+                                    <select id="inAgvId" class="form-select">
+                                        <option value="MR101">MR101</option>
+                                        <option value="MR102">MR102</option>
+                                        <option value="MR103">MR103</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- ELECTRICVOLUMN -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">ELECTRICVOLUMN (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inElectric" type="text" class="form-control" placeholder="ex: 0.66">
+                                </div>
+                            </div>
+                            <!-- TASKTYPE -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">TASKTYPE (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inTaskType" type="text" class="form-control" placeholder="ex: S">
+                                </div>
+                            </div>
+                            <!-- POSITION -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">POSITION (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inPosition" type="text" class="form-control" placeholder="ex: 2191">
+                                </div>
+                            </div>
+                        </div>
+                        <!--AGVStatus - Body -->
+                        <div class="tab-pane fade show" id="agvstatus-body" role="tabpanel">
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">Body</label>
+                                <div class="col-sm-6">
+                                    <textarea id="txtAGVStatus" class="form-control" cols="30" rows="10"> </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <button class="btn btn-dark btn-beautify">formatter</button>
+                    <button id="btnAGVStatusQuery" class="btn btn-success">查詢/更新</button>
                     <a id="btnAGVStatus" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
@@ -74,15 +128,97 @@
                     <h5 class="card-title">DockingCheck [確認機台作業狀況]</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">Parameter</label>
-                        <div class="col-sm-6">
-                            <textarea id="txtDockingCheck" class="form-control" cols="30" rows="10">
+                    <ul class="nav nav-pills mb-3" role="tablist">
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="pill"
+                                    data-bs-target="#dockingcheck-parameter" type="button" role="tab">
+                                Parameter
+                            </button>
+                        </li>
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#dockingcheck-body"
+                                    type="button" role="tab">
+                                Body
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!--DockingCheck - Parameter -->
+                        <div class="tab-pane fade show active" id="dockingcheck-parameter" role="tabpanel">
+                            <!-- EQPNAME -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">EQPNAME (必填)</label>
+                                <div class="col-sm-4">
+                                    <select id="inEQPNAME1" class="form-select">
+                                        <option value="E0065821">E0065821</option>
+                                        <option value="E0064833">E0064833</option>
+                                        <option value="E0052632">E0052632</option>
+                                        <option value="E0124415">E0124415</option>
+                                        <option value="E0076003">E0076003</option>
+                                        <option value="E0039477">E0039477</option>
+                                        <option value="E0130080">E0130080</option>
+                                        <option value="E0076004">E0076004</option>
+                                        <option value="E0092103">E0092103</option>
+                                        <option value="E0081229">E0081229</option>
+                                        <option value="E0083247">E0083247</option>
+                                        <option value="E0127477">E0127477</option>
+                                        <option value="E0124630">E0124630</option>
+                                        <option value="E0121696">E0121696</option>
+                                        <option value="E0124637">E0124637</option>
+                                        <option value="E0066575">E0066575</option>
+                                        <option value="E0067632">E0067632</option>
+                                        <option value="E0075637">E0075637</option>
+                                        <option value="E0078281">E0078281</option>
+                                        <option value="E0075638">E0075638</option>
+                                        <option value="E0064749">E0064749</option>
+                                        <option value="E0075640">E0075640</option>
+                                        <option value="E0078286">E0078286</option>
+                                        <option value="E0076639">E0076639</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- AGVNAME -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVNAME (必填)</label>
+                                <div class="col-sm-4">
+                                    <select id="inAgvName1" class="form-select">
+                                        <option value="MR101">MR101</option>
+                                        <option value="MR102">MR102</option>
+                                        <option value="MR103">MR103</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- PORT -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">PORT (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inPort1" type="text" class="form-control" placeholder="ex: 1">
+                                </div>
+                            </div>
+                            <!-- AGVSTATUS -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVSTATUS (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inAgvStatus1" type="text" class="form-control" placeholder="ex: Put in">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--DockingCheck - Body -->
+                        <div class="tab-pane fade show" id="dockingcheck-body" role="tabpanel">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Body</label>
+                                <div class="col-sm-6">
+                                    <textarea id="txtDockingCheck" class="form-control" cols="30" rows="10">
 
                             </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <button class="btn btn-dark btn-beautify">formatter</button>
+                    <button id="btnDockingCheckQuery" class="btn btn-success">查詢/更新</button>
                     <a id="btnDockingCheck" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
@@ -101,15 +237,98 @@
                     <h5 class="card-title">DockingStart [AGV車能否停靠機台]</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">Parameter</label>
-                        <div class="col-sm-6">
-                            <textarea id="txtDockingStart" class="form-control" cols="30" rows="10">
+                    <ul class="nav nav-pills mb-3" role="tablist">
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="pill"
+                                    data-bs-target="#dockingstart-parameter" type="button" role="tab">
+                                Parameter
+                            </button>
+                        </li>
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#dockingstart-body"
+                                    type="button" role="tab">
+                                Body
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!--DockingStart - Parameter -->
+                        <div class="tab-pane fade show active" id="dockingstart-parameter" role="tabpanel">
+                            <!-- EQPNAME -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">EQPNAME (必填)</label>
+                                <div class="col-sm-4">
+                                    <select id="inEQPNAME2" class="form-select">
+                                        <option value="E0065821">E0065821</option>
+                                        <option value="E0064833">E0064833</option>
+                                        <option value="E0052632">E0052632</option>
+                                        <option value="E0124415">E0124415</option>
+                                        <option value="E0076003">E0076003</option>
+                                        <option value="E0039477">E0039477</option>
+                                        <option value="E0130080">E0130080</option>
+                                        <option value="E0076004">E0076004</option>
+                                        <option value="E0092103">E0092103</option>
+                                        <option value="E0081229">E0081229</option>
+                                        <option value="E0083247">E0083247</option>
+                                        <option value="E0127477">E0127477</option>
+                                        <option value="E0124630">E0124630</option>
+                                        <option value="E0121696">E0121696</option>
+                                        <option value="E0124637">E0124637</option>
+                                        <option value="E0066575">E0066575</option>
+                                        <option value="E0067632">E0067632</option>
+                                        <option value="E0075637">E0075637</option>
+                                        <option value="E0078281">E0078281</option>
+                                        <option value="E0075638">E0075638</option>
+                                        <option value="E0064749">E0064749</option>
+                                        <option value="E0075640">E0075640</option>
+                                        <option value="E0078286">E0078286</option>
+                                        <option value="E0076639">E0076639</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- AGVNAME -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVNAME (必填)</label>
+                                <div class="col-sm-4">
+                                    <select id="inAgvName2" class="form-select">
+                                        <option value="MR101">MR101</option>
+                                        <option value="MR102">MR102</option>
+                                        <option value="MR103">MR103</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- PORT -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">PORT (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inPort2" type="text" class="form-control" placeholder="ex: 1">
+                                </div>
+                            </div>
+                            <!-- AGVSTATUS -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVSTATUS (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inAgvStatus2" type="text" class="form-control" placeholder="ex: Put in">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--DockingStart - Body -->
+                        <div class="tab-pane fade show" id="dockingstart-body" role="tabpanel">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Body</label>
+                                <div class="col-sm-6">
+                                    <textarea id="txtDockingStart" class="form-control" cols="30" rows="10">
 
                             </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
                     <button class="btn btn-dark btn-beautify">formatter</button>
+                    <button id="btnDockingStartQuery" class="btn btn-success">查詢/更新</button>
                     <a id="btnDockingStart" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
@@ -128,15 +347,98 @@
                     <h5 class="card-title">DockingEnd [AGV車能否結束停靠機台]</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 row">
-                        <label class="col-sm-2 col-form-label">Parameter</label>
-                        <div class="col-sm-6">
-                            <textarea id="txtDockingEnd" class="form-control" cols="30" rows="10">
+                    <ul class="nav nav-pills mb-3" role="tablist">
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#dockingend-parameter"
+                                    type="button" role="tab">
+                                Parameter
+                            </button>
+                        </li>
+                        <li class="nav-item p-1" role="presentation">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#dockingend-body"
+                                    type="button" role="tab">
+                                Body
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <!--DockingEnd - Parameter -->
+                        <div class="tab-pane fade show active" id="dockingend-parameter" role="tabpanel">
+                            <!-- EQPNAME -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">EQPNAME (必填)</label>
+                                <div class="col-sm-4">
+                                    <select id="inEQPNAME3" class="form-select">
+                                        <option value="E0065821">E0065821</option>
+                                        <option value="E0064833">E0064833</option>
+                                        <option value="E0052632">E0052632</option>
+                                        <option value="E0124415">E0124415</option>
+                                        <option value="E0076003">E0076003</option>
+                                        <option value="E0039477">E0039477</option>
+                                        <option value="E0130080">E0130080</option>
+                                        <option value="E0076004">E0076004</option>
+                                        <option value="E0092103">E0092103</option>
+                                        <option value="E0081229">E0081229</option>
+                                        <option value="E0083247">E0083247</option>
+                                        <option value="E0127477">E0127477</option>
+                                        <option value="E0124630">E0124630</option>
+                                        <option value="E0121696">E0121696</option>
+                                        <option value="E0124637">E0124637</option>
+                                        <option value="E0066575">E0066575</option>
+                                        <option value="E0067632">E0067632</option>
+                                        <option value="E0075637">E0075637</option>
+                                        <option value="E0078281">E0078281</option>
+                                        <option value="E0075638">E0075638</option>
+                                        <option value="E0064749">E0064749</option>
+                                        <option value="E0075640">E0075640</option>
+                                        <option value="E0078286">E0078286</option>
+                                        <option value="E0076639">E0076639</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- AGVNAME -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVNAME (必填)</label>
+                                <div class="col-sm-4">
+                                    <select id="inAgvName3" class="form-select">
+                                        <option value="MR101">MR101</option>
+                                        <option value="MR102">MR102</option>
+                                        <option value="MR103">MR103</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- PORT -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">PORT (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inPort3" type="text" class="form-control" placeholder="ex: 1">
+                                </div>
+                            </div>
+                            <!-- AGVSTATUS -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label">AGVSTATUS (必填)</label>
+                                <div class="col-sm-4">
+                                    <input id="inAgvStatus3" type="text" class="form-control" placeholder="ex: Put in">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--DockingEnd - Body -->
+                        <div class="tab-pane fade show" id="dockingend-body" role="tabpanel">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Body</label>
+                                <div class="col-sm-6">
+                                    <textarea id="txtDockingEnd" class="form-control" cols="30" rows="10">
 
                             </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <button class="btn btn-dark btn-beautify">formatter</button>
+                    <button id="btnDockingEndQuery" class="btn btn-success">查詢/更新</button>
                     <a id="btnDockingEnd" class="btn btn-primary">執行</a>
                 </div>
                 <div class="card-footer">
@@ -267,7 +569,7 @@
             <!--rack/moveIn -->
             <div class="card w-100 text-dark bg-light mb-3">
                 <div class="card-header">
-                    <h5 class="card-title">rack/moveIn  [物料資訊入倉(寫入)]</h5>
+                    <h5 class="card-title">rack/moveIn [物料資訊入倉(寫入)]</h5>
                 </div>
                 <div id="rackMoveIn" class="card-body">
                     <div class="mb-3 row">
@@ -394,7 +696,7 @@
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">
-                            force 
+                            force
                             true: 強制移出(選填)
                             false: 檢查移出資料正確性(預
                             設)
@@ -521,51 +823,41 @@
         const greentran_rack_api = "http://172.20.39.237:3003";
         //const greentran_buffer_api = "";
 
+        const agvIP = {
+            "MR101": "172.20.95.41",
+            "MR102": "172.20.95.42",
+            "MR103": "172.20.95.43"
+        }
+
+        const eqpID = {
+            "E0065821": "ASE21-2190-A01",
+            "E0064833": "ASE21-2190-B01",
+            "E0052632": "ASE21-2195-A01",
+            "E0124415": "ASE21-2195-D01",
+            "E0076003": "ASE21-2195-C01",
+            "E0039477": "ASE21-2395-A01",
+            "E0130080": "ASE21-2195-E01",
+            "E0076004": "ASE21-2395-B01",
+            "E0092103": "ASE21-FE99-A001",
+            "E0081229": "ASE21-2450-A01",
+            "E0083247": "ASE21-2400-B04",
+            "E0127477": "ASE21-2400-D04",
+            "E0124630": "ASE21-2400-D03",
+            "E0121696": "ASE21-2400-D02",
+            "E0124637": "ASE21-2400-D01",
+            "E0066575": "ASE21-2400-A03",
+            "E0067632": "ASE21-2400-A02",
+            "E0075637": "ASE21-2400-A01",
+            "E0078281": "ASE21-2400-C01",
+            "E0075638": "ASE21-2400-B01",
+            "E0064749": "ASE21-2400-C02",
+            "E0075640": "ASE21-2400-B02",
+            "E0078286": "ASE21-2400-C03",
+            "E0076639": "ASE21-2400-B03",
+        }
+
         document.addEventListener("DOMContentLoaded", async function (event) {
-            //AGVStatus
-            var objAgvStatus = {
-                "TIMESTAMP": "2022/11/10 17:45:04",
-                "TASKNAME": "20220915000133098777______XPDB",
-                "AGVID": "MR101",
-                "ELECTRICVOLUMN": "0.66",
-                "TASKTYPE": "S",
-                "LOTID": "04B3UGW003",
-                "POSITION": "2191",
-                "ERRMSG": ""
-            };
-            document.getElementById("txtAGVStatus").value = JSON.stringify(objAgvStatus, undefined, 4);
-
-            //DockingCheck
-            var objDockingCheck = {
-                "EQPNAME": "E0065821",
-                "EQPID": "ASE21-2190-A01",
-                "AGVNAME": "MR101",
-                "AGVIP": "172.20.95.41",
-                "PORT": "1",
-                "AGVSTATUS": "Put in"
-            };
-            document.getElementById("txtDockingCheck").value = JSON.stringify(objDockingCheck, undefined, 4);            
-            //DockingStart
-            var objDockingStart = {
-                "EQPNAME": "E0065821",
-                "EQPID": "ASE21-2190-A01",
-                "AGVNAME": "MR101",
-                "AGVIP": "172.20.95.41",
-                "PORT": "1",
-                "AGVSTATUS": "Put in"
-            };
-            document.getElementById("txtDockingStart").value = JSON.stringify(objDockingStart, undefined, 4);
-            //DockingEnd
-            var objDockingEnd = {
-                "EQPNAME": "E0065821",
-                "EQPID": "ASE21-2190-A01",
-                "AGVNAME": "MR101",
-                "AGVIP": "172.20.95.41",
-                "PORT": "1",
-                "AGVSTATUS": "Put in"
-            };
-            document.getElementById("txtDockingEnd").value = JSON.stringify(objDockingEnd, undefined, 4);
-
+ 
         });
 
         $(".btn-beautify").click(function (e) {
@@ -594,36 +886,14 @@
         * GetFreshWorkderOrder
         */
         $("#btnGetFreshWorkOrderResult").click(async function (e) {
-                  var request = "";
+            var request = "";
             console.log(url)
             let parameters = {
                 url: url + "/CIM/GetLastWorkOrder",
                 data: request.replace(/(?:\r\n|\r|\n)/g, ''),
             };
             var result = await jqHttpPost(parameters.url, parameters.data);
-
-            //var test = {
-            //                      "id_ipc": 67,
-            //                      "id_mcs": 131,
-            //                      "timestamp": "2022/10/06 17:36:44",
-            //                      "task_name": "20220915000133098777______XPDB",
-            //                      "lot_id": "04BDHDW001",
-            //                      "tag_id": "CS000088G",
-            //                      "box_type": "CS8G",
-            //                      "from_location": "RK101",
-            //                      "to_location": "E0127477",
-            //                      "type": "Load",
-            //                      "port_id": "PORT1",
-            //                      "end_tray": "N",
-            //                      "task_id": 0,
-            //                      "enable": 1,
-            //                      "create_id": 0,
-            //                      "create_time": "2022-10-12T05:29:13",
-            //                      "update_id": 0,
-            //                      "update_time": "2022-10-12T05:29:13"
-            //                    };
-            //swalTip(parameters);
-
+ 
             ResponseFormatter("txtGetFreshWorkOrderResult", result);
         });
 
@@ -631,6 +901,35 @@
         /**
          * AGVStatus
          */
+        $("#btnAGVStatusQuery").click(async function (e) {
+            let agvid = document.getElementById("inAgvId").value;
+            let eletric = document.getElementById("inElectric").value;
+            let taskType = document.getElementById("inTaskType").value;
+            let position = document.getElementById("inPosition").value;
+
+            let request = "";
+            console.log(url)
+            let parameters = {
+                url: url + "/CIM/GetLastWorkOrder",
+                data: request.replace(/(?:\r\n|\r|\n)/g, ''),
+            };
+            var result = await jqHttpPost(parameters.url, parameters.data);
+
+            var obj =
+            {
+                "TIMESTAMP": result.timestamp,
+                "TASKNAME": result.task_name,
+                "AGVID": agvid,
+                "ELECTRICVOLUMN": eletric,
+                "TASKTYPE": taskType,
+                "LOTID": result.lot_id,
+                "POSITION": position,
+                "ERRMSG": ""
+            }
+
+            document.getElementById("txtAGVStatus").value = JSON.stringify(obj, undefined, 4);
+        });
+
         $("#btnAGVStatus").click(async function (e) {
             let request = document.getElementById("txtAGVStatus").value;
 
@@ -645,6 +944,117 @@
         });
 
         //DockingCheck
+        $("#btnDockingCheckQuery").click(async function (e) {
+            let eqpName = document.getElementById("inEQPNAME1").value;
+            let eqpId = "";
+            let agvName = document.getElementById("inAgvName1").value;
+            let agvIp = "";
+            let port = document.getElementById("inPort1").value;
+            let agvStatus = document.getElementById("inAgvStatus1").value;
+
+            switch (eqpName) {
+                case "E0065821":
+                    eqpId = eqpID.E0065821;
+                    break;
+                case "E0064833":
+                    eqpId = eqpID.E0064833;
+                    break;
+                case "E0052632":
+                    eqpId = eqpID.E0052632;
+                    break;
+                case "E0124415":
+                    eqpId = eqpID.E0124415;
+                    break;
+                case "E0076003":
+                    eqpId = eqpID.E0076003;
+                    break;
+                case "E0039477":
+                    eqpId = eqpID.E0039477;
+                    break;
+                case "E0130080":
+                    eqpId = eqpID.E0130080;
+                    break;
+                case "E0076004":
+                    eqpId = eqpID.E0076004;
+                    break;
+                case "E0092103":
+                    eqpId = eqpID.E0092103;
+                    break;
+                case "E0081229":
+                    eqpId = eqpID.E0081229;
+                    break;
+                case "E0083247":
+                    eqpId = eqpID.E0083247;
+                    break;
+                case "E0127477":
+                    eqpId = eqpID.E0127477;
+                    break;
+                case "E0124630":
+                    eqpId = eqpID.E0124630;
+                    break;
+                case "E0121696":
+                    eqpId = eqpID.E0121696;
+                    break;
+                case "E0124637":
+                    eqpId = eqpID.E0124637;
+                    break;
+                case "E0066575":
+                    eqpId = eqpID.E0066575;
+                    break;
+                case "E0067632":
+                    eqpId = eqpID.E0067632;
+                    break;
+                case "E0075637":
+                    eqpId = eqpID.E0075637;
+                    break;
+                case "E0078281":
+                    eqpId = eqpID.E0078281;
+                    break;
+                case "E0075638":
+                    eqpId = eqpID.E0075638;
+                    break;
+                case "E0064749":
+                    eqpId = eqpID.E0064749;
+                    break;
+                case "E0064749":
+                    eqpId = eqpID.E0064749;
+                    break;
+                case "E0075640":
+                    eqpId = eqpID.E0075640;
+                    break;
+                case "E0078286":
+                    eqpId = eqpID.E0078286;
+                    break;
+                case "E0076639":
+                    eqpId = eqpID.E0076639;
+                    break;
+            }
+
+            switch (agvName) {
+                case "MR101":
+                    agvIp = agvIP.MR101;
+                    break;
+                case "MR102":
+                    agvIp = agvIP.MR102;
+                    break;
+                case "MR103":
+                    agvIp = agvIP.MR103;
+                    break;
+            }
+
+            var obj =
+            {
+                "EQPNAME": eqpName,
+                "EQPID": eqpId,
+                "AGVNAME": agvName,
+                "AGVIP": agvIp,
+                "port": port,
+                "AGVSTATUS": agvStatus
+            }
+
+            document.getElementById("txtDockingCheck").value = JSON.stringify(obj, undefined, 4);
+        });
+
         $("#btnDockingCheck").click(async function (e) {
             let request = document.getElementById("txtDockingCheck").value;
             let parameters = {
@@ -658,6 +1068,116 @@
         });
 
         //DockingStart
+        $("#btnDockingStartQuery").click(async function (e) {
+            let eqpName = document.getElementById("inEQPNAME2").value;
+            let eqpId = "";
+            let agvName = document.getElementById("inAgvName2").value;
+            let agvIp = "";
+            let port = document.getElementById("inPort2").value;
+            let agvStatus = document.getElementById("inAgvStatus2").value;
+
+            switch (eqpName) {
+                case "E0065821":
+                    eqpId = eqpID.E0065821;
+                    break;
+                case "E0064833":
+                    eqpId = eqpID.E0064833;
+                    break;
+                case "E0052632":
+                    eqpId = eqpID.E0052632;
+                    break;
+                case "E0124415":
+                    eqpId = eqpID.E0124415;
+                    break;
+                case "E0076003":
+                    eqpId = eqpID.E0076003;
+                    break;
+                case "E0039477":
+                    eqpId = eqpID.E0039477;
+                    break;
+                case "E0130080":
+                    eqpId = eqpID.E0130080;
+                    break;
+                case "E0076004":
+                    eqpId = eqpID.E0076004;
+                    break;
+                case "E0092103":
+                    eqpId = eqpID.E0092103;
+                    break;
+                case "E0081229":
+                    eqpId = eqpID.E0081229;
+                    break;
+                case "E0083247":
+                    eqpId = eqpID.E0083247;
+                    break;
+                case "E0127477":
+                    eqpId = eqpID.E0127477;
+                    break;
+                case "E0124630":
+                    eqpId = eqpID.E0124630;
+                    break;
+                case "E0121696":
+                    eqpId = eqpID.E0121696;
+                    break;
+                case "E0124637":
+                    eqpId = eqpID.E0124637;
+                    break;
+                case "E0066575":
+                    eqpId = eqpID.E0066575;
+                    break;
+                case "E0067632":
+                    eqpId = eqpID.E0067632;
+                    break;
+                case "E0075637":
+                    eqpId = eqpID.E0075637;
+                    break;
+                case "E0078281":
+                    eqpId = eqpID.E0078281;
+                    break;
+                case "E0075638":
+                    eqpId = eqpID.E0075638;
+                    break;
+                case "E0064749":
+                    eqpId = eqpID.E0064749;
+                    break;
+                case "E0064749":
+                    eqpId = eqpID.E0064749;
+                    break;
+                case "E0075640":
+                    eqpId = eqpID.E0075640;
+                    break;
+                case "E0078286":
+                    eqpId = eqpID.E0078286;
+                    break;
+                case "E0076639":
+                    eqpId = eqpID.E0076639;
+                    break;
+            }
+
+            switch (agvName) {
+                case "MR101":
+                    agvIp = agvIP.MR101;
+                    break;
+                case "MR102":
+                    agvIp = agvIP.MR102;
+                    break;
+                case "MR103":
+                    agvIp = agvIP.MR103;
+                    break;
+            }
+
+            var obj =
+            {
+                "EQPNAME": eqpName,
+                "EQPID": eqpId,
+                "AGVNAME": agvName,
+                "AGVIP": agvIp,
+                "port": port,
+                "AGVSTATUS": agvStatus
+            }
+
+            document.getElementById("txtDockingStart").value = JSON.stringify(obj, undefined, 4);
+        });
         $("#btnDockingStart").click(async function (e) {
             let request = document.getElementById("txtDockingStart").value;
             let parameters = {
@@ -668,10 +1188,121 @@
             var response = await jqHttpPost(parameters.url, parameters.data);
             //swalTip(parameters);
             ResponseFormatter("txtDockingStartResult", response.data);
-            
+
         });
 
         //DockingEnd
+        $("#btnDockingEndQuery").click(async function (e) {
+            let eqpName = document.getElementById("inEQPNAME3").value;
+            let eqpId = "";
+            let agvName = document.getElementById("inAgvName3").value;
+            let agvIp = "";
+            let port = document.getElementById("inPort3").value;
+            let agvStatus = document.getElementById("inAgvStatus3").value;
+
+            switch (eqpName) {
+                case "E0065821":
+                    eqpId = eqpID.E0065821;
+                    break;
+                case "E0064833":
+                    eqpId = eqpID.E0064833;
+                    break;
+                case "E0052632":
+                    eqpId = eqpID.E0052632;
+                    break;
+                case "E0124415":
+                    eqpId = eqpID.E0124415;
+                    break;
+                case "E0076003":
+                    eqpId = eqpID.E0076003;
+                    break;
+                case "E0039477":
+                    eqpId = eqpID.E0039477;
+                    break;
+                case "E0130080":
+                    eqpId = eqpID.E0130080;
+                    break;
+                case "E0076004":
+                    eqpId = eqpID.E0076004;
+                    break;
+                case "E0092103":
+                    eqpId = eqpID.E0092103;
+                    break;
+                case "E0081229":
+                    eqpId = eqpID.E0081229;
+                    break;
+                case "E0083247":
+                    eqpId = eqpID.E0083247;
+                    break;
+                case "E0127477":
+                    eqpId = eqpID.E0127477;
+                    break;
+                case "E0124630":
+                    eqpId = eqpID.E0124630;
+                    break;
+                case "E0121696":
+                    eqpId = eqpID.E0121696;
+                    break;
+                case "E0124637":
+                    eqpId = eqpID.E0124637;
+                    break;
+                case "E0066575":
+                    eqpId = eqpID.E0066575;
+                    break;
+                case "E0067632":
+                    eqpId = eqpID.E0067632;
+                    break;
+                case "E0075637":
+                    eqpId = eqpID.E0075637;
+                    break;
+                case "E0078281":
+                    eqpId = eqpID.E0078281;
+                    break;
+                case "E0075638":
+                    eqpId = eqpID.E0075638;
+                    break;
+                case "E0064749":
+                    eqpId = eqpID.E0064749;
+                    break;
+                case "E0064749":
+                    eqpId = eqpID.E0064749;
+                    break;
+                case "E0075640":
+                    eqpId = eqpID.E0075640;
+                    break;
+                case "E0078286":
+                    eqpId = eqpID.E0078286;
+                    break;
+                case "E0076639":
+                    eqpId = eqpID.E0076639;
+                    break;
+            }
+
+            switch (agvName) {
+                case "MR101":
+                    agvIp = agvIP.MR101;
+                    break;
+                case "MR102":
+                    agvIp = agvIP.MR102;
+                    break;
+                case "MR103":
+                    agvIp = agvIP.MR103;
+                    break;
+            }
+
+            var obj =
+            {
+                "EQPNAME": eqpName,
+                "EQPID": eqpId,
+                "AGVNAME": agvName,
+                "AGVIP": agvIp,
+                "port": port,
+                "AGVSTATUS": agvStatus
+            }
+
+            document.getElementById("txtDockingEnd").value = JSON.stringify(obj, undefined, 4);
+        });
+
         $("#btnDockingEnd").click(async function (e) {
             let request = document.getElementById("txtDockingEnd").value;
             let parameters = {
@@ -696,10 +1327,9 @@
             for (var i = 0; i < inputs.length; i++) {
                 object[inputs[i].id] = inputs[i].value;
             }
-
-
+ 
             let parameters = {
-                url: `${greentran_agv_api}/agv/dispatch`,
+                url: `${ greentran_agv_api }/agv/dispatch`,
                 data: object,
             }
 
@@ -716,7 +1346,7 @@
             }
 
             let parameters = {
-                url: `${greentran_agv_api}/agv/Info`,
+                url: `${ greentran_agv_api }/agv/Info`,
                 data: object,
             }
 
@@ -732,7 +1362,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/getEmpty`,
+                url: `${ greentran_rack_api }/rack/getEmpty`,
                 data: object,
             }
 
@@ -748,7 +1378,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/moveIn`,
+                url: `${ greentran_rack_api }/rack/moveIn`,
                 data: object,
             }
 
@@ -764,7 +1394,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/findProduct`,
+                url: `${ greentran_rack_api }/rack/findProduct`,
                 data: object,
             }
 
@@ -780,7 +1410,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/moveOut`,
+                url: `${ greentran_rack_api }/rack/moveOut`,
                 data: object,
             }
 
@@ -797,7 +1427,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/setInfo`,
+                url: `${ greentran_rack_api }/rack/setInfo`,
                 data: object,
             }
 
@@ -814,7 +1444,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/getInfo`,
+                url: `${ greentran_rack_api }/rack/getInfo`,
                 data: object,
             }
 
@@ -831,7 +1461,7 @@
             }
 
             let parameters = {
-                url: `${greentran_rack_api}/rack/release`,
+                url: `${ greentran_rack_api }/rack/release`,
                 data: object,
             }
 
@@ -840,4 +1470,4 @@
         });
 
     </script>
-    }
+}
