@@ -180,3 +180,86 @@ async function SetRackMoveOut(parameters) {
 
     }
 }
+
+
+$("#btnMoveInGetEmpty").click(async function (e) {
+    const inputs = document.querySelectorAll('#MoveInGetEmpty input');
+    let object = {};
+    for (var i = 0; i < inputs.length; i++) {
+        object[inputs[i].id] = inputs[i].value;
+    }
+    var response = await SetRackMoveIn(object);
+    ResponseFormatter("txtMoveInGetEmpty", response);
+
+    document.getElementById("moveInOrigin").value = response.origin;
+    document.getElementById("moveInCell").value = response.cell;
+    document.getElementById("moveInTag").value = response.tag;
+    document.getElementById("moveInLot").value = response.lot;
+    document.getElementById("moveInTask").value = response.task;
+    document.getElementById("moveInStation").value = response.station;
+    //document.getElementById("moveInOrigin")
+    //moveInOrigin
+    //moveInCell
+    //moveInTag
+    //moveInLot
+    //moveInTask
+    //moveInStation
+
+});
+
+$("#btnKeyInMoveIn").click(async function (e) {
+    const inputs = document.querySelectorAll('#keyInMoveIn input');
+    let object = {};
+    for (var i = 0; i < inputs.length; i++) {
+        object[inputs[i].id] = inputs[i].value;
+    }
+
+    let parameters = {
+        url: `http://172.20.39.237:3003/rack/moveIn`,
+        data: object,
+    }
+
+    var response = await jqHttpPost(parameters.url, parameters.data);
+    ResponseFormatter("txtKeyInMoveIn", response);
+});
+
+$("#btnMoveOutFIndProduct").click(async function (e) {
+    const inputs = document.querySelectorAll('#moveOutFindProduct input');
+    let object = {};
+    for (var i = 0; i < inputs.length; i++) {
+        object[inputs[i].id] = inputs[i].value;
+    }
+
+    let parameters = {
+        url: `http://172.20.39.237:3003/rack/findProduct`,
+        data: object,
+    }
+    var response = await SetRackMoveOut(object);
+    //var response = await jqHttpPost(parameters.url, parameters.data);
+    ResponseFormatter("txtMoveOutFIndProduct", response);
+
+    document.getElementById("MoveOutOrigin").value = response.origin;
+    document.getElementById("MoveOutCell").value = response.cell;
+    document.getElementById("MoveOutTag").value = response.tag;
+    document.getElementById("MoveOutForce").value = response.force;
+    //MoveOutOrigin
+    //MoveOutCell
+    //MoveOutTag
+    //MoveOutForce
+});
+
+$("#btnMoveOut").click(async function (e) {
+    const inputs = document.querySelectorAll('#MoveOut input');
+    let object = {};
+    for (var i = 0; i < inputs.length; i++) {
+        object[inputs[i].id] = inputs[i].value;
+    }
+
+    let parameters = {
+        url: `http://172.20.39.237:3003/rack/moveIn`,
+        data: object,
+    }
+
+    var response = await jqHttpPost(parameters.url, parameters.data);
+    ResponseFormatter("txtKeyInMoveIn", response);
+});
