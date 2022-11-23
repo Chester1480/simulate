@@ -16,6 +16,7 @@ builder.Services.AddSingleton<GreenTransService>();
 builder.Services.AddSingleton<JQservice>();
 
 builder.Services.AddSingleton<CacheService>();
+builder.Services.AddSingleton<ConfigService>();
 builder.Services.AddSingleton<DBService>();
 builder.Services.AddSingleton<FileService>();
 builder.Services.AddSingleton<SoapService>();
