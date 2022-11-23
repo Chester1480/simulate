@@ -17,6 +17,12 @@
             GreenTrans
         </button>
     </li>
+    <li class="nav-item p-1" role="presentation">
+        <button class="nav-link" id="pills-greentrans-tab" data-bs-toggle="pill" data-bs-target="#pills-MoveTest"
+                type="button" role="tab" aria-controls="pills-greentrans" aria-selected="false">
+            MoveOut/MoveIn 測試
+        </button>
+    </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
     <!-- cim -->
@@ -455,7 +461,7 @@
     </div>
 
     <!-- greentrans -->
-    <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-greentrans"
+    <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-greentrans">
          role="tabpanel">
         <div class="row p-5">
             <!--agv/dispatch -->
@@ -815,6 +821,211 @@
             </div>
         </div>
     </div>
+
+    <div style="height:800px;overflow-y: auto;overflow-x: hidden;" class="tab-pane fade bg-dark" id="pills-MoveTest">
+         <div class="row p-5">
+           <!--getEmpty -->
+           <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">MoveIn測試</h5>
+                </div>
+                <div id="moveGetEmpty" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">group 群組代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="group" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">rack 貨架代碼(選填)</label>
+                        <div class="col-sm-4">
+                            <input id="rack" type="text" class="form-control" placeholder="ex: RK101">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">task 工單編號</label>
+                        <div class="col-sm-4">
+                            <input id="task" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">station 來源站點</label>
+                        <div class="col-sm-4">
+                            <input id="station" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnMoveInGetEmpty" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtMoveInGetEmpty" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--moveIn -->
+           <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">moveIn [物料資訊入倉(寫入)]</h5>
+                </div>
+                <div id="keyInMoveIn" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="moveInOrigin" type="text" class="form-control" placeholder="ex: MR101">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="moveInCell" type="text" class="form-control" placeholder="ex: RK101A01">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">tag 物料編號(RFID)</label>
+                        <div class="col-sm-4">
+                            <input id="moveInTag" type="text" class="form-control" placeholder="ex: FO000058T">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">lot 貨批編號</label>
+                        <div class="col-sm-4">
+                            <input id="moveInLot" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">task 工單編號</label>
+                        <div class="col-sm-4">
+                            <input id="moveInTask" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">station 來源站點</label>
+                        <div class="col-sm-4">
+                            <input id="moveInStation" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnKeyInMoveIn" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtKeyInMoveIn" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--findProduct -->
+           <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">MoveOut 測試</h5>
+                </div>
+                <div id="moveOutFindProduct" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="origin" type="text" class="form-control" placeholder="ex: MR101">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">group 群組代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="group" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">rack 貨架代碼(選填, 可指定)</label>
+                        <div class="col-sm-4">
+                            <input id="rack" type="text" class="form-control" placeholder="ex: RK101">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">tag 物料編號(RFID)(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="tag" type="text" class="form-control" placeholder="ex: FO000058T">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">type 物料型態(選填, 可指定)</label>
+                        <div class="col-sm-4">
+                            <input id="type" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnMoveOutFIndProduct" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtMoveOutFIndProduct" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--moveOut -->
+           <div class="card w-100 text-dark bg-light mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        MoveOut [物料資訊出倉(清除)]
+                    </h5>
+                </div>
+                <div id="MoveOut" class="card-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">origin 車輛代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="MoveOutOrigin" type="text" class="form-control" placeholder="ex: MR101">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">cell 儲位代碼(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="MoveOutCell" type="text" class="form-control" placeholder="ex: RK101A01">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">tag 物料編號(RFID)(必填)</label>
+                        <div class="col-sm-4">
+                            <input id="MoveOutTag" type="text" class="form-control" placeholder="ex: FO000058T">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">
+                            force
+                            true: 強制移出(選填)
+                            false: 檢查移出資料正確性(預
+                            設)
+                        </label>
+                        <div class="col-sm-4">
+                            <input id="MoveOutForce" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <a id="btnMoveOut" class="btn btn-primary">執行</a>
+                </div>
+                <div class="card-footer">
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">結果</label>
+                        <div class="col-sm-6">
+                            <textarea id="txtMoveOut" class="form-control" cols="20" rows="10" readonly>
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @section scripts{
     <script>
