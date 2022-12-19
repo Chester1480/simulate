@@ -17,7 +17,7 @@ namespace CIMSimulate.Service.UtilS
         #region ConnectionString 
         public string GetMyDBConString()
         {
-            return _configService.GetDBConString(); ;
+            return _configService.GetIPCConString(); ;
         }
         #endregion
 
@@ -544,20 +544,22 @@ namespace CIMSimulate.Service.UtilS
             }
         }
     }
-    public class ConfigService
-    {
 
-        #region DBConnectionString
-        public string GetDBConString()
-        {
-            var builder = new ConfigurationBuilder()
-                  .SetBasePath(Directory.GetCurrentDirectory())
-                  .AddJsonFile("appsettings.json");
-            var config = builder.Build();
-            var connectionString = config.GetConnectionString("DBConnection");
-            return connectionString;
-        }
-        #endregion
+    //2022.12.19 - 將ConfigService 另建檔案
+    //public class ConfigService
+    //{
 
-    }
+    //    #region DBConnectionString
+    //    public string GetDBConString()
+    //    {
+    //        var builder = new ConfigurationBuilder()
+    //              .SetBasePath(Directory.GetCurrentDirectory())
+    //              .AddJsonFile("appsettings.json");
+    //        var config = builder.Build();
+    //        var connectionString = config.GetConnectionString("DBConnection");
+    //        return connectionString;
+    //    }
+    //    #endregion
+
+    //}
 }
