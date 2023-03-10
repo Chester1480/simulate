@@ -1,6 +1,7 @@
 ﻿using CIMSimulate.Models;
 using CIMSimulate.Service.UtilS;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 
 namespace CIMSimulate.Controllers
@@ -196,6 +197,47 @@ namespace CIMSimulate.Controllers
 
         #region 車載料架管理系統的API (目前場內壓測暫無使用到，後續是否使用待確認)
         #endregion
+
+        [Route("rack/GetMacAddress")]
+        [HttpPost]
+        public async Task<dynamic> GetMacAddress()
+        {
+
+            const int MIN_MAC_ADDR_LENGTH = 12;
+            string macAddress = string.Empty;
+            long maxSpeed = -1;
+
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                Console.WriteLine(
+                    "Name: " + nic.Name +
+                    " Found MAC Address: " + nic.GetPhysicalAddress() +
+                    " Type: " + nic.NetworkInterfaceType);
+
+                string tempMac = nic.GetPhysicalAddress().ToString();
+                if (nic.Speed > maxSpeed &&
+                    !string.IsNullOrEmpty(tempMac) &&
+                    tempMac.Length >= MIN_MAC_ADDR_LENGTH)
+                {
+                    maxSpeed = nic.Speed;
+                    macAddress = tempMac;
+                }
+            }
+
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+
+            List<string> macList = new List<string>();
+            foreach (var nic in nics)
+            {
+                // 因為電腦中可能有很多的網卡(包含虛擬的網卡)，
+                // 我只需要 Ethernet 網卡的 MAC
+                if (nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                {
+                    macList.Add(nic.GetPhysicalAddress().ToString());
+                }
+            }
+            return macAddress;
+        }
 
     }
 }
